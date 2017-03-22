@@ -13,11 +13,11 @@ class Napakalaki
   private
   
   def initialize
-    @currentPlayerIndex
-    @currentMonster
-    @currentPlayer
-    @players
-    @dealer
+    @currentPlayerIndex = nil
+    @currentMonster = nil
+    @currentPlayer = nil
+    @players = nil
+    @dealer = nil
   end
 
   def initPlayers(names)
