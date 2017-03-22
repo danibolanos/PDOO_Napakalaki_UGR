@@ -10,7 +10,7 @@ require 'singleton'
 class Napakalaki
   include Singleton
   
-  public
+  private
   
   def initialize
     @currentPlayerIndex
@@ -20,7 +20,6 @@ class Napakalaki
     @dealer
   end
 
-  private
   def initPlayers(names)
     #No se sabe
   end

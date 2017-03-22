@@ -10,6 +10,8 @@ require 'singleton'
 class Dice
   include Singleton
   
+  private
+  
   def initialize
   end
 

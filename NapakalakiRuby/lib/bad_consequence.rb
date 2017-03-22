@@ -11,7 +11,7 @@ class BadConsequence
   
   MAXTREASURES = 10
     
-  public
+  private
   
   def initialize(t, l, nVisible, nHidden, v, h, death)
     @text = t
@@ -23,6 +23,8 @@ class BadConsequence
     @specificHiddenTreasures = h
   end
 
+  public
+  
   def isEmpty
     vacio=false
     if @nVisibleTreasures==0 && @nHiddenTreasures==0 && @specificVisibleTreasures.empty? && @specificHiddenTreasures.empty?
@@ -60,15 +62,15 @@ class BadConsequence
   end
 
   def BadConsequence.newLevelNumberOfTreasures(t, l, nVisible, nHidden)
-    BadConsequence.new(t, l, nVisible, nHidden, Array.new, Array.new, false)
+    new(t, l, nVisible, nHidden, Array.new, Array.new, false)
   end
   
   def BadConsequence.newLevelSpecificTreasures (t, l, v, h)
-    BadConsequence.new(t, l, -1, -1, v, h, false)
+    new(t, l, -1, -1, v, h, false)
   end  
     
   def BadConsequence.newDeath (t)
-    BadConsequence.new(t, Player::MAXLEVEL, BadConsequence::MAXTREASURES, BadConsequence::MAXTREASURES, Array.new, Array.new, true)
+    new(t, Player::MAXLEVEL, BadConsequence::MAXTREASURES, BadConsequence::MAXTREASURES, Array.new, Array.new, true)
   end  
   
   def adjustToFitTreasureLists(v,h)
@@ -92,7 +94,7 @@ class BadConsequence
     return cadena
   end
   
-  attr_reader :death
+  #attr_reader :death
 
 end
 end

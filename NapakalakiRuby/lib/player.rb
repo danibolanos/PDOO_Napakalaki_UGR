@@ -131,7 +131,7 @@ class Player
   
   def validState
     condicion = false;
-    if @pendingBadConsequence.isEmpty && @hiddenTreasures.size < 5
+    if (@pendingBadConsequence == nil || @pendingBadConsequence.isEmpty) && @hiddenTreasures.size < 5
       condicion = true;
     end
     return condicion;

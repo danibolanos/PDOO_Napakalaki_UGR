@@ -204,10 +204,14 @@ badConsequence =
   3,[TreasureKind::BOTHHANDS,TreasureKind::ONEHAND,TreasureKind::ONEHAND],Array.new)
 @@monsters<<Monster.new("Bicéfalo", 21, badConsequence, prize)
 
-a = BadConsequence.newDeath("JAJAJA")
-puts a.getLevels()
 
-b = Prize.new(Treasure.new("Bueno",7,[TreasureKind::HELMET]),1)
+jugador=Player.new("Juan")
+if(jugador.validState)
+  puts "Vale"
+end
+
+CardDealer.instance
+puts CardDealer.instance
 
 end
 
