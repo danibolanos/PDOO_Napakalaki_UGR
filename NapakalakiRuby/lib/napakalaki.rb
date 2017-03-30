@@ -13,7 +13,6 @@ class Napakalaki
   private
   
   def initialize
-    @currentPlayerIndex = nil
     @currentMonster = nil
     @currentPlayer = nil
     @players = nil
@@ -21,19 +20,41 @@ class Napakalaki
   end
 
   def initPlayers(names)
-    #No se sabe
+    names.each do |nombre|
+       @players << new.Player(nombre)
+    end
   end
   
   def nextPlayer
-    #No se sabe
+    index = 0
+    if @currentPlayer == nil
+       index = rand(@players.size)
+    else
+      index = @players.index(@currentPlayer) + 1
+      if index == @players.size
+        index = 0        
+      end
+    end
+    @currentPlayer = @player.at(index)
+    @player.at(index)
   end
   
-  def nextTurnAllowed
-    #No se sabe
+  def nextTurnIsAllowed
+    condicion = false
+    if @currentPlayer == nil || @currentPlayer.validState
+      condicion = true
+    end
+    condicion
   end
   
   def setEnemies
-    #No se sabe
+    @players.each do |jugador|
+      enemigo = rand((@players.size)-1)
+      if enemigo == @players.index(jugador) 
+       enemigo = (@player.size)-1
+      end
+       jugador.setEnemy(@players.at(enemigo))
+    end
   end
   
   public
@@ -59,11 +80,11 @@ class Napakalaki
   end
   
   def getCurrentPlayer
-    #No se sabe
+    @currentPlayer
   end
   
   def getCurrentMonster
-    #No se sabe
+    @currentMonster
   end
   
   def nextTurn
@@ -71,7 +92,11 @@ class Napakalaki
   end
   
   def endOfGame(result)
-    #No se sabe
+    condicion = false
+    if result == [CombatResult::WINGAME] 
+      condicion = true
+    end
+    condicion
   end 
 end
 
