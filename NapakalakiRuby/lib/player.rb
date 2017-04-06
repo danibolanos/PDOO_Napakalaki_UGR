@@ -49,7 +49,38 @@ class Player
   end
   
   def canMakeTreasureVisible(t)
-    #No se sabe
+    tipo = t.getType
+    puedo = true
+    
+    case tipo
+     
+    when [TreasureKind::ONEHAND]
+        contador=0
+        @visibleTreasures.each do|tesoro|
+          if tesoro.getType == [TreasureKind::BOTHHANDS]
+            puedo = false
+          elsif tesoro.getType == [TreasureKind::ONEHAND]
+            contador += 1
+          end
+        end
+        if contador > 1
+          puedo = false
+        end
+      
+    when [TreasureKind::BOTHHANS]
+      @visibleTreasures.each do|tesoro|
+          if tesoro.getType == tipo || tesoro.getType == [TreasureKind::ONEHAND]
+            puedo = false
+          end
+      end
+    else
+      @visibleTreasures.each do|tesoro|
+          if tesoro.getType == tipo
+            puedo = false
+          end
+    end
+    end
+    return puedo
   end
   
   def howManyVisibleTreasures(tKind)
@@ -69,7 +100,8 @@ class Player
   end
   
   def giveMeATreasure
-    #No se sabe
+    indice = rand(@hiddenTreasures.length)
+    return @hiddenTreasures.at(indice)
   end
   
   def canYouGiveMeATreasure

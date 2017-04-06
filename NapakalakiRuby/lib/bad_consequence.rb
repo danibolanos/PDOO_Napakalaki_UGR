@@ -54,11 +54,11 @@ class BadConsequence
   end
   
   def substractVisibleTreasure(t)
-    #No se sabe
+    @specificVisibleTreasures.delete(t.getType)
   end
   
   def substractHiddenTreasure(t)
-    #No se sabe
+    @specificHiddenTreasures.delete(t.getType)
   end
 
   def BadConsequence.newLevelNumberOfTreasures(t, l, nVisible, nHidden)

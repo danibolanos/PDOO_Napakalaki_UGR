@@ -188,26 +188,46 @@ class CardDealer
     @unusedTreasures.shuffle!
   end
   
-  def shuffleMonster
-    @unusedMonster.shuffle!
+  def shuffleMonsters
+    @unusedMonsters.shuffle!
   end
   
   public
   
   def nextTreasure
-    #No se sabe
+    if @unusedTreasures.empty?
+      @usedTreasures.each do |tesoro|
+        @unusedTreasures << tesoro
+      end
+      @usedTreasures.clear
+      shuffleTreasures
+    end
+    t = @unusedTreasures.at(0)
+    @usedTreasures << t
+    @unusedTreasures.delete(t)   
+    return t
   end
   
   def nextMonster
-    #No se sabe
+    if @unusedMonsters.empty?
+      @usedMonsters.each do |monstruo|
+        @unusedMonsters << monstruo
+      end
+      @usedMonsters.clear
+      shuffleMonsters
+    end
+    m = @unusedMonsters.at(0)
+    @usedMonsters << m
+    @unusedMonsters.delete(m)   
+    return m
   end
   
   def giveTreasureBack(t)
-    @unusedTreasures << t
+    @usedTreasures << t
   end
   
   def giveMonsterBack(m)
-    @unusedMonsters << m
+    @usedMonsters << m
   end
   
   def initCards
@@ -218,7 +238,7 @@ class CardDealer
     cadena = "Tesoros sin usar: \n"+@unusedTreasures.join("\n\n")
     cadena += "\n\nTesoros usados: \n"+@usedTreasures.join("\n\n")
     cadena += "\n\nMonstruos sin usar: \n"+@unusedMonsters.join("\n\n")
-    cadena += "\n\nMonstruos sin usar: \n"+@usedMonsters.join("\n\n")
+    cadena += "\n\nMonstruos usados: \n"+@usedMonsters.join("\n\n")
     return cadena;
   end
 end
