@@ -5,6 +5,7 @@
 
 module NapakalakiGame
   
+require_relative 'treasure_kind'
 require_relative 'player'
 
 class BadConsequence
@@ -54,11 +55,25 @@ class BadConsequence
   end
   
   def substractVisibleTreasure(t)
-    @specificVisibleTreasures.delete(t.getType)
+    if @nVisibleTreasures == -1
+      indice = @specificVisibleTreasures.find_index(t.getType)
+      if indice != nil
+        @specificVisibleTreasures.delete_at(indice)
+      end
+    elsif @nVisibleTreasures > 0
+      @nVisibleTreasures -= 1
+    end
   end
   
   def substractHiddenTreasure(t)
-    @specificHiddenTreasures.delete(t.getType)
+    if @nHiddenTreasures == -1
+      indice = @specificHiddenTreasures.find_index(t.getType)
+      if indice != nil
+        @specificHiddenTreasures.delete_at(indice)
+      end
+    elsif @nHiddenTreasures > 0
+      @nHiddenTreasures -= 1
+    end
   end
 
   def BadConsequence.newLevelNumberOfTreasures(t, l, nVisible, nHidden)
@@ -95,6 +110,8 @@ class BadConsequence
   end
   
   #attr_reader :death
+  
+  private_class_method :new
 
 end
 end

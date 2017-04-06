@@ -4,6 +4,10 @@
 # and open the template in the editor.
 
 module NapakalakiGame
+  
+  require_relative 'bad_consequence'
+  require_relative 'treasure'
+  require_relative 'combat_result'
 
 class Player
   
@@ -54,12 +58,12 @@ class Player
     
     case tipo
      
-    when [TreasureKind::ONEHAND]
+    when TreasureKind::ONEHAND
         contador=0
         @visibleTreasures.each do|tesoro|
-          if tesoro.getType == [TreasureKind::BOTHHANDS]
+          if tesoro.getType == TreasureKind::BOTHHANDS
             puedo = false
-          elsif tesoro.getType == [TreasureKind::ONEHAND]
+          elsif tesoro.getType == TreasureKind::ONEHAND
             contador += 1
           end
         end
@@ -67,9 +71,9 @@ class Player
           puedo = false
         end
       
-    when [TreasureKind::BOTHHANS]
+    when TreasureKind::BOTHHANDS
       @visibleTreasures.each do|tesoro|
-          if tesoro.getType == tipo || tesoro.getType == [TreasureKind::ONEHAND]
+          if tesoro.getType == tipo || tesoro.getType == TreasureKind::ONEHAND
             puedo = false
           end
       end
@@ -154,11 +158,21 @@ class Player
   end
   
   def discardVisibleTreasure(t)
-    #No se sabe
+    indice = @visibleTreasures.find_index(t)
+    @visibleTreasures.delete_at(indice)
+    if @pendingBadConsequence != nil && !@pendingBadConsequence.isEmpty
+      @pendingBadConsequence.substractVisibleTreasure(t)
+    end
+    dieIfNoTreasures
   end
   
   def discardHiddenTreasure(t)
-    #No se sabe
+    indice = @hiddenTreasures.find_index(t)
+    @hiddenTreasures.delete_at(indice)
+    if @pendingBadConsequence != nil && !@pendingBadConsequence.isEmpty
+      @pendingBadConsequence.substractHiddenTreasure(t)
+    end
+    dieIfNoTreasures
   end
   
   def validState

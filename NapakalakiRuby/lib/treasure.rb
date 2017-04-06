@@ -4,6 +4,8 @@
 # and open the template in the editor.
 
 module NapakalakiGame
+  
+  require_relative 'treasure_kind'
 
 class Treasure
   

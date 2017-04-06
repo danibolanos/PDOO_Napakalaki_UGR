@@ -4,6 +4,9 @@
 # and open the template in the editor.
 
 module NapakalakiGame
+  
+require_relative 'prize'
+require_relative 'bad_consequence'
 
 class Monster
   

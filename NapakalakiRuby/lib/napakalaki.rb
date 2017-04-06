@@ -6,6 +6,9 @@
 module NapakalakiGame
 
 require 'singleton'
+require_relative 'card_dealer'
+require_relative 'player'
+require_relative 'monster'
 
 class Napakalaki
   include Singleton
@@ -39,7 +42,7 @@ class Napakalaki
     @player.at(index)
   end
   
-  def nextTurnIsAllowed
+  def nextTurnAllowed
     condicion = false
     if @currentPlayer == nil || @currentPlayer.validState
       condicion = true
@@ -60,15 +63,22 @@ class Napakalaki
   public
   
   def developCombat
-    #No se sabe
+    @currentPlayer.combat(@currentMonster)
+    #FALTAN COSAS
   end
   
   def discardVisibleTreasures(treasures)
-    #No se sabe
+    treasures.each do |treasure|
+      @currentPlayer.discardVisibleTreasure(treasure)
+      @dealer.giveTreasureBack(treasure)
+    end
   end
   
   def discardHiddenTreasures(treasures)
-    #No se sabe
+    treasures.each do |treasure|
+      @currentPlayer.discardHiddenTreasure(treasure)
+      @dealer.giveTreasureBack(treasure)
+    end
   end
   
   def makeTreasuresVisible(treasures)
@@ -76,7 +86,10 @@ class Napakalaki
   end
   
   def initGame(players)
-    
+    initPlayers(players)
+    setEnemies
+    @dealer.initCards
+    nextTurn
   end
   
   def getCurrentPlayer
@@ -88,7 +101,17 @@ class Napakalaki
   end
   
   def nextTurn
-    #No se sabe
+    stateOK = nextTurnAllowed
+    stateOK = @currentPlayer.validState
+    if stateOK
+      currentMonster = @dealer.nextMonster
+      currentPlayer = nextPlayer
+      dead = @currentPlayer.isDead
+      if dead
+        @currentPlayer.initTreasures
+      end
+    end
+    return stateOK
   end
   
   def endOfGame(result)

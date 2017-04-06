@@ -6,6 +6,8 @@
 module NapakalakiGame
 
 require 'singleton'
+require_relative 'monster'
+require_relative 'treasure'
 
 class CardDealer
   include Singleton
@@ -231,7 +233,8 @@ class CardDealer
   end
   
   def initCards
-    #No se sabe
+    initTreasureCardDeck
+    initMonsterCardDeck
   end
   
   def to_s
