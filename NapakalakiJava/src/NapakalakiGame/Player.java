@@ -51,7 +51,23 @@ public class Player {
         //No se sabe
     }
     private boolean canMakeTreasureVisible(Treasure t){
-        //No se sabe
+        boolean puede = false;
+        int numVisiblesTipo=0;
+        TreasureKind tipo=t.getType();
+        for(Treasure tesoro:visibleTreasures){
+            if(tesoro.getType()==tipo)
+                numVisiblesTipo++;
+        }
+        if(tipo==TreasureKind.BOTHHANDS && numVisiblesTipo==0)
+            puede=true;
+        else{
+            if(tipo==TreasureKind.ONEHAND && numVisiblesTipo<2)
+                puede=true;
+            else
+                if(numVisiblesTipo==0)
+                    puede=true;
+        }
+        return puede;
     }
     private int howManyVisibleTreasures(TreasureKind tKind){
         int cuantos=0;
@@ -65,7 +81,10 @@ public class Player {
            dead = true;
     }
     private Treasure giveMeATreasure(){
-        //No se sabe
+        int indice=(int) (Math.random()*hiddenTreasures.size()-1);
+        Treasure tesoro=hiddenTreasures.get(indice);
+        hiddenTreasures.remove(indice);
+        return tesoro;
     }
     private boolean canYouGiveMeATreasure(){
         boolean puedo=true;
@@ -84,8 +103,8 @@ public class Player {
         canISteal = true;
         visibleTreasures = new ArrayList();
         hiddenTreasures = new ArrayList();
-        pendingBadConsequence = null;
-        enemy = null;
+        //enemy
+        //pendingBadConsequence
     }
     public String getName(){
         return name;
@@ -106,10 +125,16 @@ public class Player {
         //No se sabe
     }
     public void discardVisibleTreasure(Treasure t){
-        //No se sabe
+        visibleTreasures.remove(t);
+        if((pendingBadConsequence!=null)&&(!pendingBadConsequence.isEmpty()))
+            pendingBadConsequence.substractVisibleTreasure(t);
+        dieIfNoTreasures();
     }
     public void discardHiddenTreasure(Treasure t){
-        //No se sabe
+        hiddenTreasures.remove(t);
+        if((pendingBadConsequence!=null)&&(!pendingBadConsequence.isEmpty()))
+            pendingBadConsequence.substractHiddenTreasure(t);
+        dieIfNoTreasures();
     }
     public boolean validState(){
         boolean condicion = false;

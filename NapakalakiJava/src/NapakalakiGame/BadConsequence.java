@@ -51,11 +51,35 @@ public class BadConsequence {
     }
     
     public void substractVisibleTreasure(Treasure t){
-        //No se sabe todavía
+        if(nVisibleTreasures==-1){
+           boolean quitado=false;
+           TreasureKind tipo=t.getType();
+           for(int i=0; i<specificVisibleTreasures.size() && !quitado;i++){
+              if(specificVisibleTreasures.get(i)==tipo){
+                 specificVisibleTreasures.remove(i);
+                 quitado=true;
+              }
+           }
+        }
+        else
+            if(nVisibleTreasures>0)
+                nVisibleTreasures--;
     }
     
     public void substractHiddenTreasure(Treasure t){
-        //No se sabe todavía
+        if(nHiddenTreasures==-1){
+           boolean quitado=false;
+           TreasureKind tipo=t.getType();
+           for(int i=0; i<specificHiddenTreasures.size() && !quitado;i++){
+              if(specificHiddenTreasures.get(i)==tipo){
+                specificHiddenTreasures.remove(i);
+                quitado=true;
+              }
+           }
+        }
+        else
+            if(nHiddenTreasures>0)
+                nHiddenTreasures--;
     }
     
     public BadConsequence(String t, int l, int nVisible, int nHidden){
@@ -83,9 +107,9 @@ public class BadConsequence {
     public BadConsequence(String t, boolean death){
         text = t;
         this.death = death;     
-        levels = Player.MAXLEVEL;
-        nVisibleTreasures = BadConsequence.MAXTREASURES;
-        nHiddenTreasures = BadConsequence.MAXTREASURES;
+        levels = Integer.MAX_VALUE;
+        nVisibleTreasures = Integer.MAX_VALUE;
+        nHiddenTreasures = Integer.MAX_VALUE;
         specificVisibleTreasures = new ArrayList();
         specificHiddenTreasures = new ArrayList();
     }
