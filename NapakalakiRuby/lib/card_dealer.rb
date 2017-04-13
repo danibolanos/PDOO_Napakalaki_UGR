@@ -197,7 +197,7 @@ class CardDealer
   public
   
   def nextTreasure
-    if @unusedTreasures.empty?
+    if @unusedTreasures.empty? then
       @usedTreasures.each do |tesoro|
         @unusedTreasures << tesoro
       end
@@ -207,11 +207,11 @@ class CardDealer
     t = @unusedTreasures.at(0)
     @usedTreasures << t
     @unusedTreasures.delete(t)   
-    return t
+    t
   end
   
   def nextMonster
-    if @unusedMonsters.empty?
+    if @unusedMonsters.empty? then
       @usedMonsters.each do |monstruo|
         @unusedMonsters << monstruo
       end
@@ -221,7 +221,7 @@ class CardDealer
     m = @unusedMonsters.at(0)
     @usedMonsters << m
     @unusedMonsters.delete(m)   
-    return m
+    m
   end
   
   def giveTreasureBack(t)
@@ -242,7 +242,7 @@ class CardDealer
     cadena += "\n\nTesoros usados: \n"+@usedTreasures.join("\n\n")
     cadena += "\n\nMonstruos sin usar: \n"+@unusedMonsters.join("\n\n")
     cadena += "\n\nMonstruos usados: \n"+@usedMonsters.join("\n\n")
-    return cadena;
+    cadena
   end
 end
 

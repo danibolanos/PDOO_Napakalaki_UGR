@@ -6,9 +6,10 @@
 module NapakalakiGame
 
 require 'singleton'
-require_relative 'card_dealer'
 require_relative 'player'
+require_relative 'card_dealer'
 require_relative 'monster'
+require_relative 'combat_result'
 
 class Napakalaki
   include Singleton
@@ -30,11 +31,11 @@ class Napakalaki
   
   def nextPlayer
     index = 0
-    if @currentPlayer == nil
+    if @currentPlayer == nil then
        index = rand(@players.size)
     else
       index = @players.index(@currentPlayer) + 1
-      if index == @players.size
+      if index == @players.size then
         index = 0        
       end
     end
@@ -44,7 +45,7 @@ class Napakalaki
   
   def nextTurnAllowed
     condicion = false
-    if @currentPlayer == nil || @currentPlayer.validState
+    if @currentPlayer == nil || @currentPlayer.validState then
       condicion = true
     end
     condicion
@@ -53,7 +54,7 @@ class Napakalaki
   def setEnemies
     @players.each do |jugador|
       enemigo = rand((@players.size)-1)
-      if enemigo == @players.index(jugador) 
+      if enemigo == @players.index(jugador) then
        enemigo = (@player.size)-1
       end
        jugador.setEnemy(@players.at(enemigo))
@@ -63,8 +64,9 @@ class Napakalaki
   public
   
   def developCombat
-    @currentPlayer.combat(@currentMonster)
-    #FALTAN COSAS
+    combatResult = @currentPlayer.combat(@currentMonster)
+    @dealer.giveMonsterBack(@currentMonster)
+    combatResult
   end
   
   def discardVisibleTreasures(treasures)
@@ -82,7 +84,9 @@ class Napakalaki
   end
   
   def makeTreasuresVisible(treasures)
-    #No se sabe
+    treasures.each do |t|
+      @currentPlayer.makeTreasureVisible(t)
+    end
   end
   
   def initGame(players)
@@ -103,20 +107,20 @@ class Napakalaki
   def nextTurn
     stateOK = nextTurnAllowed
     stateOK = @currentPlayer.validState
-    if stateOK
+    if stateOK then
       currentMonster = @dealer.nextMonster
       currentPlayer = nextPlayer
       dead = @currentPlayer.isDead
-      if dead
+      if dead then
         @currentPlayer.initTreasures
       end
     end
-    return stateOK
+    stateOK
   end
   
   def endOfGame(result)
     condicion = false
-    if result == [CombatResult::WINGAME] 
+    if result == [CombatResult::WINGAME] then
       condicion = true
     end
     condicion

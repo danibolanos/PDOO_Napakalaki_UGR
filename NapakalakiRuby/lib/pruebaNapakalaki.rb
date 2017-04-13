@@ -6,6 +6,7 @@
 module NapakalakiGame
 
 require_relative 'monster'
+require_relative 'dice'
 
 class PruebaNapakalaki
 
@@ -14,37 +15,37 @@ class PruebaNapakalaki
 def self.CombatLevelMoreThan10
         tmp = Array.new
         @@monsters.each do |elemento|
-          if elemento.getCombatLevel > 10
+          if elemento.getCombatLevel > 10 then
             tmp << elemento
           end
         end
-    return tmp
+    tmp
 end
 
 def self.BadConsequenceOnlyLevel
         tmp = Array.new
         @@monsters.each do |elemento|
             aniadir=true;
-            if elemento.getBadConsequence.death
+            if elemento.getBadConsequence.death then
                 aniadir=false;
-              elsif elemento.getBadConsequence.getNVisibleTreasures !=0 || elemento.getBadConsequence.getNHiddenTreasures != 0
+              elsif elemento.getBadConsequence.getNVisibleTreasures !=0 || elemento.getBadConsequence.getNHiddenTreasures != 0 then
                     aniadir=false  
             end
-            if aniadir
+            if aniadir then
                 tmp << elemento
             end
         end
-        return tmp
+        tmp
 end
 
 def self.PrizeLevelMoreThan1
         tmp = Array.new
         @@monsters.each do |elemento|
-            if elemento.getLevelsGained > 1
+            if elemento.getLevelsGained > 1 then
                tmp << elemento
             end
         end      
-        return tmp;
+        tmp
 end
 
 def self.LoseTreasureSpecific(treasure)
@@ -59,13 +60,13 @@ def self.LoseTreasureSpecific(treasure)
         treasuresList << hidden
         end
         treasuresList.each do |tesoros|
-           if (tesoros == treasure and !added)
+           if (tesoros == treasure and !added) then
               monstruosT << monstruo
               added = true
            end
         end
         end
-        return monstruosT
+        monstruosT
 end
 
 #Monstruo1
@@ -198,6 +199,7 @@ badConsequence =
 @@monsters<<Monster.new("Bicéfalo", 21, badConsequence, prize)
 
 puts @@monsters
+puts Dice.instance.nextNumber
 
 end
 

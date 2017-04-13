@@ -28,50 +28,50 @@ class BadConsequence
   
   def isEmpty
     vacio=false
-    if @nVisibleTreasures==0 && @nHiddenTreasures==0 && @specificVisibleTreasures.empty? && @specificHiddenTreasures.empty?
+    if @nVisibleTreasures==0 && @nHiddenTreasures==0 && @specificVisibleTreasures.empty? && @specificHiddenTreasures.empty? then
       vacio=true
     end
-    return vacio
+    vacio
   end
   
   def getLevels
-    return @levels
+    @levels
   end
   
   def getNVisibleTreasures
-    return @nVisibleTreasures
+    @nVisibleTreasures
   end
   
   def getNHiddenTreasures
-    return @nHiddenTreasures
+    @nHiddenTreasures
   end
   
   def getSpecificHiddenTreasures
-    return @specificHiddenTreasures
+    @specificHiddenTreasures
   end
   
   def getSpecificVisibleTreasures
-    return @specificVisibleTreasures
+    @specificVisibleTreasures
   end
   
   def substractVisibleTreasure(t)
-    if @nVisibleTreasures == -1
+    if @nVisibleTreasures == -1 then
       indice = @specificVisibleTreasures.find_index(t.getType)
-      if indice != nil
+      if indice != nil then
         @specificVisibleTreasures.delete_at(indice)
       end
-    elsif @nVisibleTreasures > 0
+    elsif @nVisibleTreasures > 0 then
       @nVisibleTreasures -= 1
     end
   end
   
   def substractHiddenTreasure(t)
-    if @nHiddenTreasures == -1
+    if @nHiddenTreasures == -1 then
       indice = @specificHiddenTreasures.find_index(t.getType)
-      if indice != nil
+      if indice != nil then
         @specificHiddenTreasures.delete_at(indice)
       end
-    elsif @nHiddenTreasures > 0
+    elsif @nHiddenTreasures > 0 then
       @nHiddenTreasures -= 1
     end
   end
@@ -94,19 +94,19 @@ class BadConsequence
 
   def to_s
     cadena = "#{@text}" 
-    if @death
+    if @death then
       cadena += "\nDeath = #{@death}"
     else 
-      if @levels != 0
+      if @levels != 0 then
         cadena += "\nLevels_Down = #{@levels}"
       end
-      if @nVisibleTreasures == -1
+      if @nVisibleTreasures == -1 then
          cadena += "\nSpecific_Visible_Treasures_Down = #{@specificVisibleTreasures} / Specific_Hidden_Treasures_Down = #{@specificHiddenTreasures}"
       else
          cadena += "\nRandom_Visible_Treasures_Down = #{@nVisibleTreasures} / Random_Hidden_Treasures_Down = #{@nHiddenTreasures}"
       end
     end 
-    return cadena
+    cadena
   end
   
   #attr_reader :death

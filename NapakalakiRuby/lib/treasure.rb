@@ -18,22 +18,22 @@ class Treasure
   end
   
   def getName
-    return @name
+    @name
   end
   
   def getBonus
-    return @bonus
+    @bonus
   end
   
   def getType
-    return @type
+    @type
   end
   
   def to_s
     cadena = "#{@name}"
     cadena += "\nBonus: #{@bonus}"
     cadena += "\nTipo: #{@type}"
-    return cadena;
+    cadena
   end
 end
 

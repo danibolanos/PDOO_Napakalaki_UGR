@@ -5,9 +5,11 @@
 
 module NapakalakiGame
   
-  require_relative 'bad_consequence'
   require_relative 'treasure'
+  require_relative 'bad_consequence'
   require_relative 'combat_result'
+  require_relative 'dice'
+  require_relative 'card_dealer'
 
 class Player
   
@@ -23,19 +25,19 @@ class Player
     @visibleTreasures.each do |elemento|
       clevel += elemento.getBonus
     end
-    return clevel
+    clevel
   end
   
   def incrementLevels(l)
     @level += l
-    if(@level > MAXLEVEL)
+    if(@level > MAXLEVEL) then
       @level = MAXLEVEL
     end
   end
   
   def decrementLevels(l)
      @level -= l
-    if(@level < 1)
+    if(@level < 1) then
       @level = 1
     end
   end
@@ -45,11 +47,24 @@ class Player
   end
   
   def applyPrize(m)
-    #No se sabe
+    nLevels = m.getLevelsGained
+    incrementLevels(nLevels)
+    nTreasures = m.getTreasuresGained
+    if nTreasures > 0 then
+      dealer = CardDealer.instance
+      nTreasures.times do
+        treasure = dealer.nextTreasure
+        @hiddenTreasures << treasure
+      end
+    end
   end
   
   def applyBadConsequence(m)
-    #No se sabe
+    badConsequence = m.getBadConsequence
+    nLevels = badConsequence.getLevels
+    decrementLevels(nLevels)
+    pendingBad = badConsequence.adjustToFitTreasureLists(@visibleTreasures, @hiddenTreasures)
+    setPendingBadConsequence(pendingBad)
   end
   
   def canMakeTreasureVisible(t)
@@ -61,59 +76,59 @@ class Player
     when TreasureKind::ONEHAND
         contador=0
         @visibleTreasures.each do|tesoro|
-          if tesoro.getType == TreasureKind::BOTHHANDS
+          if tesoro.getType == TreasureKind::BOTHHANDS then
             puedo = false
-          elsif tesoro.getType == TreasureKind::ONEHAND
+          elsif tesoro.getType == TreasureKind::ONEHAND then
             contador += 1
           end
         end
-        if contador > 1
+        if contador > 1 then
           puedo = false
         end
       
     when TreasureKind::BOTHHANDS
       @visibleTreasures.each do|tesoro|
-          if tesoro.getType == tipo || tesoro.getType == TreasureKind::ONEHAND
+          if tesoro.getType == tipo || tesoro.getType == TreasureKind::ONEHAND then
             puedo = false
           end
       end
     else
       @visibleTreasures.each do|tesoro|
-          if tesoro.getType == tipo
+          if tesoro.getType == tipo then
             puedo = false
           end
     end
     end
-    return puedo
+    puedo
   end
   
   def howManyVisibleTreasures(tKind)
     cuantos=0;
     @visibleTreasures.each do |elemento|
-      if elemento.getType == tKind
+      if elemento.getType == tKind then
         cuantos+1
       end
     end
-    return cuantos
+    cuantos
   end
   
   def dieIfNoTreasures
-    if @visibleTreasures.empty? && @hiddenTreasures.empty?
+    if @visibleTreasures.empty? && @hiddenTreasures.empty? then
       @dead = true
     end
   end
   
   def giveMeATreasure
     indice = rand(@hiddenTreasures.length)
-    return @hiddenTreasures.at(indice)
+    @hiddenTreasures.at(indice)
   end
   
   def canYouGiveMeATreasure
-    puedo=true;
-    if @visibleTreasures.empty? && @hiddenTreasures.empty?
-      puedo=false;
+    puedo=true
+    if @visibleTreasures.empty? && @hiddenTreasures.empty? then
+      puedo=false
     end
-    return puedo;
+    puedo
   end
   
   def haveStolen
@@ -134,33 +149,59 @@ class Player
   end
   
   def getName
-    return @name
+    @name
   end
   
   def isDead
-    return @dead
+    @dead
   end
   
   def getHiddenTreasures
-    return @hiddenTreasures
+    @hiddenTreasures
   end
   
   def getVisibleTreasures
-    return @visibleTreasures
+    @visibleTreasures
   end
   
   def combat(m)
-    #No se sabe
+    myLevel = getCombatLevel
+    monsterLevel = m.getCombatLevel
+    if !canISteal then
+      dice = Dice.instance
+      number = dice.nextNumber
+      if number < 3 then
+        enemyLevel = @enemy.getCombatLevel
+        monsterLevel += enemyLevel
+      end
+    end
+    if myLevel > monsterLevel then
+      applyPrize(m)
+      if getLevels >= MAXLEVEL then
+        combatResult = CombatResult::WINGAME
+      else
+        combatResult = CombatResult::WIN
+      end
+    else
+      applyBadConsequence(m)
+      combatResult = CombatResult::LOSE
+    end
+    combatResult
   end
   
-  def makeTreasureVisible
-    #No se sabe
+  def makeTreasureVisible(t)
+    canI = canMakeTreasureVisible(t)
+    if canI then
+      @visibleTreasures << t
+      indice = @hiddenTreasures.find_index(t)
+      @hiddenTreasures.delete_at(indice)
+    end
   end
   
   def discardVisibleTreasure(t)
     indice = @visibleTreasures.find_index(t)
     @visibleTreasures.delete_at(indice)
-    if @pendingBadConsequence != nil && !@pendingBadConsequence.isEmpty
+    if @pendingBadConsequence != nil && !@pendingBadConsequence.isEmpty then
       @pendingBadConsequence.substractVisibleTreasure(t)
     end
     dieIfNoTreasures
@@ -169,18 +210,18 @@ class Player
   def discardHiddenTreasure(t)
     indice = @hiddenTreasures.find_index(t)
     @hiddenTreasures.delete_at(indice)
-    if @pendingBadConsequence != nil && !@pendingBadConsequence.isEmpty
+    if @pendingBadConsequence != nil && !@pendingBadConsequence.isEmpty then
       @pendingBadConsequence.substractHiddenTreasure(t)
     end
     dieIfNoTreasures
   end
   
   def validState
-    condicion = false;
-    if (@pendingBadConsequence == nil || @pendingBadConsequence.isEmpty) && @hiddenTreasures.size < 5
-      condicion = true;
+    condicion = false
+    if (@pendingBadConsequence == nil || @pendingBadConsequence.isEmpty) && @hiddenTreasures.size < 5 then
+      condicion = true
     end
-    return condicion;
+    condicion
   end
   
   def initTreasures
@@ -188,7 +229,7 @@ class Player
   end
   
   def getLevels
-    return @level
+    @level
   end
   
   def stealTreasure
@@ -200,7 +241,7 @@ class Player
   end
   
   def canISteal
-    return @canISteal
+    @canISteal
   end
   
   def discardAllTreasures
@@ -210,12 +251,12 @@ class Player
   def to_s
     cadena = "Nombre: #{@name}"
     cadena += "\nNivel: #{@level}"
-    if @dead
+    if @dead then
       cadena += "\nEstá muerto"
     else
       cadena += "\nEstá vivo"
     end
-    if @canISteal
+    if @canISteal then
       cadena += "\nPuede robar"
     else
       cadena += "\nNo puede robar"
@@ -224,7 +265,7 @@ class Player
       cadena += "\nTesoros ocultos: #{@hiddenTreasures}"
       cadena += "\nMal rollo a cumplir: #{@pendingBadConsequence}"
     end
-    return cadena;    
+    cadena   
   end
 end
 

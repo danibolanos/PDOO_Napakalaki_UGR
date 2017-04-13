@@ -15,16 +15,16 @@ class Prize
   end
   
   def getTreasures
-    return @treasures
+    @treasures
   end
   
   def getLevels
-    return @levels
+    @levels
   end
   
   def to_s
     cadena = "Treasures = #{@treasures} / Levels = #{@levels}"
-    return cadena 
+    cadena 
   end
 end 
 

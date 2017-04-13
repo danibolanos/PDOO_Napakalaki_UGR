@@ -18,7 +18,7 @@ class Dice
   public
   
   def nextNumber
-    return rand(6)+1
+    rand(6)+1
   end
 end
 

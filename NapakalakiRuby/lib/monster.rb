@@ -20,30 +20,30 @@ class Monster
   end
   
   def getName
-    return @name
+    @name
   end
   
   def getCombatLevel
-    return @combatLevel
+    @combatLevel
   end
   
   def getBadConsequence
-    return @badConsequence
+    @badConsequence
   end
   
   def getLevelsGained
-    return @prize.getLevels
+    @prize.getLevels
   end
   
   def getTreasuresGained
-    return @prize.getTreasures
+    @prize.getTreasures
   end
   
   def to_s
     cadena = "Name: #{@name} \nCombat_Level: #{@combatLevel}"
     cadena += "\nPrize: #{@prize} \nBad_Consequence: #{@badConsequence}"
     cadena += "\n\n"
-    return cadena
+    cadena
   end
 end
 
