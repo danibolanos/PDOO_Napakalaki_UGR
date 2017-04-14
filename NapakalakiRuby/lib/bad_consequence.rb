@@ -97,7 +97,7 @@ class BadConsequence
         fin = false
         i = 0
         while i <  copy_Visible.size && !fin
-        if copy_Visible.at(i) == tipo
+        if copy_Visible.at(i) == tipo then
           visible << copy_Visible.at(i)
           copy_Visible.delete_at(i)
           fin = true
@@ -112,7 +112,7 @@ class BadConsequence
         fin = false
         i = 0
         while i <  copy_Hidden.size && !fin
-        if copy_Hidden.at(i) == tipo
+        if copy_Hidden.at(i) == tipo then
           hidden << copy_Hidden.at(i)
           copy_Hidden.delete_at(i)
           fin = true
