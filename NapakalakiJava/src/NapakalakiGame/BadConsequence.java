@@ -115,7 +115,41 @@ public class BadConsequence {
     }
  
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
-      //No se sabe todavía
+        //Quizas no sea lo mas correcto, porque no deberia modificar el mal rollo, sino 
+        //devolver otro distinto
+        if(nVisibleTreasures==-1){
+            ArrayList<TreasureKind> visible = new ArrayList();
+            for(Treasure t:v){
+                TreasureKind tipo = t.getType();
+                boolean fin=false;
+                for(int i=0; i<specificVisibleTreasures.size() && !fin; i++)
+                    if(specificVisibleTreasures.get(i)==tipo){
+                        visible.add(specificVisibleTreasures.get(i));
+                        specificVisibleTreasures.remove(i);
+                        fin = true;
+                    }
+            }
+            ArrayList<TreasureKind> hidden = new ArrayList();
+            for(Treasure t:h){
+                TreasureKind tipo = t.getType();
+                boolean fin=false;
+                for(int i=0; i<specificHiddenTreasures.size() && !fin; i++)
+                    if(specificHiddenTreasures.get(i)==tipo){
+                        hidden.add(specificHiddenTreasures.get(i));
+                        specificHiddenTreasures.remove(i);
+                        fin = true;
+                    }
+            }
+            specificVisibleTreasures = visible;
+            specificHiddenTreasures = hidden;
+        }
+        else{
+            if(v.size() < nVisibleTreasures)
+                nVisibleTreasures = v.size();
+            if(h.size() < nHiddenTreasures)
+                nHiddenTreasures = h.size();
+        }
+        return this;
     }
     
     //NO UML
