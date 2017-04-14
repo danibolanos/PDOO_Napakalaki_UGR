@@ -194,13 +194,17 @@ class Player
     if canI then
       @visibleTreasures << t
       indice = @hiddenTreasures.find_index(t)
+      if indice != nil then
       @hiddenTreasures.delete_at(indice)
+      end
     end
   end
   
   def discardVisibleTreasure(t)
     indice = @visibleTreasures.find_index(t)
+    if indice != nil then
     @visibleTreasures.delete_at(indice)
+    end
     if @pendingBadConsequence != nil && !@pendingBadConsequence.isEmpty then
       @pendingBadConsequence.substractVisibleTreasure(t)
     end
@@ -209,7 +213,9 @@ class Player
   
   def discardHiddenTreasure(t)
     indice = @hiddenTreasures.find_index(t)
-    @hiddenTreasures.delete_at(indice)
+    if indice != nil then
+      @hiddenTreasures.delete_at(indice)
+    end
     if @pendingBadConsequence != nil && !@pendingBadConsequence.isEmpty then
       @pendingBadConsequence.substractHiddenTreasure(t)
     end
@@ -225,7 +231,19 @@ class Player
   end
   
   def initTreasures
-    #No se sabe
+    dealer = CardDealer.instance
+    dice = Dice.instance
+    bringToLife
+    treasure = dealer.nextTreasure
+    @hiddenTreasures << treasure
+    number = dice.nextNumber
+    if number == 6 then
+      treasure = dealer.nextTreasure
+      @hiddenTreasures << treasure
+    elsif number > 1 then
+      treasure = dealer.nextTreasure
+      @hiddenTreasures << treasure
+    end
   end
   
   def getLevels
@@ -233,7 +251,18 @@ class Player
   end
   
   def stealTreasure
-    #No se sabe
+    canI = canISteal
+    if canI then
+      canYou = @enemy.canYouGiveMeATreasure
+      if canYou then
+        treasure = @enemy.giveMeATreasure
+        @hiddenTreasures << treasure
+        haveStolen
+      else
+        treasure = nil
+      end
+    end
+    treasure
   end
   
   def setEnemy(enemy)
@@ -245,7 +274,14 @@ class Player
   end
   
   def discardAllTreasures
-    #No se sabe
+    copyVisible = Array.new(@visibleTreasures)
+    copyHidden = Array.new(@hiddenTreasures)
+    copyVisible.each do |treasure|
+      discardVisibleTreasure(treasure)
+    end
+    copyHidden.each do |treasure|
+      discardHiddenTreasure(treasure)
+    end
   end
   
   def to_s

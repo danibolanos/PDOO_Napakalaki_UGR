@@ -80,16 +80,59 @@ class BadConsequence
     new(t, l, nVisible, nHidden, Array.new, Array.new, false)
   end
   
-  def BadConsequence.newLevelSpecificTreasures (t, l, v, h)
+  def BadConsequence.newLevelSpecificTreasures(t, l, v, h)
     new(t, l, -1, -1, v, h, false)
   end  
     
-  def BadConsequence.newDeath (t)
+  def BadConsequence.newDeath(t)
     new(t, Player::MAXLEVEL, BadConsequence::MAXTREASURES, BadConsequence::MAXTREASURES, Array.new, Array.new, true)
   end  
   
-  def adjustToFitTreasureLists(v,h)
-    #No se sabe
+  def adjustToFitTreasureLists(v, h)
+    if @nVisibleTreasures == -1 then
+      visible = Array.new
+      copy_Visible = Array.new(@specificVisibleTreasures)
+      v.each do |t|
+        tipo = t.getType
+        fin = false
+        i = 0
+        while i <  copy_Visible.size && !fin
+        if copy_Visible.at(i) == tipo
+          visible << copy_Visible.at(i)
+          copy_Visible.delete_at(i)
+          fin = true
+        end
+        i += 1
+        end
+      end
+      hidden = Array.new
+      copy_Hidden = Array.new(@specificHiddenTreasures)
+      h.each do |t|
+        tipo = t.getType
+        fin = false
+        i = 0
+        while i <  copy_Hidden.size && !fin
+        if copy_Hidden.at(i) == tipo
+          hidden << copy_Hidden.at(i)
+          copy_Hidden.delete_at(i)
+          fin = true
+        end
+        i += 1
+        end
+      end
+      bc = BadConsequence.newLevelSpecificTreasures(@text, @levels, visible, hidden)
+    else
+      n_visible = @nVisibleTreasures
+      n_hidden = @nHiddenTreasures
+      if v.size < n_visible then
+        n_visible = v.size
+      end
+      if h.size < n_hidden then
+      n_hidden = h.size
+      end
+      bc = BadConsequence.newLevelNumberOfTreasures(@text, @levels, n_visible, n_hidden)
+    end
+    bc
   end 
 
   def to_s

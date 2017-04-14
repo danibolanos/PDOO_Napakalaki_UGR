@@ -7,6 +7,7 @@ module NapakalakiGame
 
 require_relative 'monster'
 require_relative 'dice'
+require_relative 'card_dealer'
 
 class PruebaNapakalaki
 
