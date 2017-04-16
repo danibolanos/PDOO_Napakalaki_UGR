@@ -109,9 +109,8 @@ class Napakalaki
   def nextTurn
     stateOK = nextTurnAllowed
     if stateOK then
-      currentMonster = @dealer.nextMonster
-      currentPlayer = nextPlayer
-      puts "HOLA HOLITA"
+      @currentMonster = @dealer.nextMonster
+      @currentPlayer = nextPlayer
       dead = @currentPlayer.isDead
       if dead then
         @currentPlayer.initTreasures
