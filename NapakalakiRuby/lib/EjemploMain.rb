@@ -12,7 +12,6 @@ module NapakalakiGame
       def prueba
         
        test = Test::GameTester.instance
-     
        game = Napakalaki.instance
    
        #Se prueba el juego con 2 jugadores

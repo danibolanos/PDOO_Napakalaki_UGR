@@ -24,8 +24,9 @@ class Napakalaki
   end
 
   def initPlayers(names)
+    @players = Array.new
     names.each do |nombre|
-       @players << new.Player(nombre)
+       @players << Player.new(nombre)
     end
   end
   
@@ -39,8 +40,8 @@ class Napakalaki
         index = 0        
       end
     end
-    @currentPlayer = @player.at(index)
-    @player.at(index)
+    @currentPlayer = @players.at(index)
+    @players.at(index)
   end
   
   def nextTurnAllowed
@@ -55,7 +56,7 @@ class Napakalaki
     @players.each do |jugador|
       enemigo = rand((@players.size)-1)
       if enemigo == @players.index(jugador) then
-       enemigo = (@player.size)-1
+       enemigo = (@players.size)-1
       end
        jugador.setEnemy(@players.at(enemigo))
     end
@@ -92,6 +93,7 @@ class Napakalaki
   def initGame(players)
     initPlayers(players)
     setEnemies
+    @dealer = CardDealer.instance
     @dealer.initCards
     nextTurn
   end
@@ -106,10 +108,10 @@ class Napakalaki
   
   def nextTurn
     stateOK = nextTurnAllowed
-    stateOK = @currentPlayer.validState
     if stateOK then
       currentMonster = @dealer.nextMonster
       currentPlayer = nextPlayer
+      puts "HOLA HOLITA"
       dead = @currentPlayer.isDead
       if dead then
         @currentPlayer.initTreasures

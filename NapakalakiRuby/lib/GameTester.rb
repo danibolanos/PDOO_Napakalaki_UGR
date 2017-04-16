@@ -22,7 +22,6 @@ class GameTester
     @game = aGame
     names = getPlayerNames(numberOfPlayers)
     @game.initGame(names) 
-    
     begin #Mientras dure la partida
       currentPlayer=@game.getCurrentPlayer()
       begin #Mientras el jugador se decide a conocer al monstruo
