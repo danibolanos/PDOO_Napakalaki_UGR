@@ -220,7 +220,9 @@ public class CardDealer {
     
     public void initCards(){
         initTreasureCardDeck();
+        shuffleTreasures();
         initMonsterCardDeck();
+        shuffleMonsters();
     }
     public String toString(){
         String cadena = "Tesoros sin usar: " + unusedTreasures.toString();
