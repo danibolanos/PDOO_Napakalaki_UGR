@@ -181,11 +181,33 @@ public class CardDealer {
     }
     
     public Treasure nextTreasure(){
-        //No se sabe todavía
+        Treasure dar;
+        if(unusedTreasures.isEmpty()){
+            for(int i=0;i<usedTreasures.size();i++){
+                unusedTreasures.add(usedTreasures.get(0));
+                usedTreasures.remove(0);
+            }
+            shuffleTreasures();
+        }
+        dar=unusedTreasures.get(0);
+        unusedTreasures.remove(0);
+        //usedTreasures.add(dar);
+        return dar;
     }
     
     public Monster nextMonster(){
-        //No se sabe todavía
+        Monster dar;
+        if(unusedMonsters.isEmpty()){
+            for(int i=0;i<usedMonsters.size();i++){
+                unusedMonsters.add(usedMonsters.get(0));
+                usedMonsters.remove(0);
+            }
+            shuffleTreasures();
+        }
+        dar=unusedMonsters.get(0);
+        unusedMonsters.remove(0);
+        //usedMonsters.add(dar);
+        return dar;
     }
     
     public void giveTreasureBack(Treasure t){
@@ -197,7 +219,10 @@ public class CardDealer {
     }
     
     public void initCards(){
-        //No se sabe todavía
+        initTreasureCardDeck();
+        shuffleTreasures();
+        initMonsterCardDeck();
+        shuffleMonsters();
     }
     public String toString(){
         String cadena = "Tesoros sin usar: " + unusedTreasures.toString();

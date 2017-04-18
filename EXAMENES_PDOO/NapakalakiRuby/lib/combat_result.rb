@@ -5,7 +5,7 @@
 
 module NapakalakiGame
 
-module TreasureKind
+module CombatResult
     WINGAME = :wingame
     WIN = :win
     LOSE = :lose

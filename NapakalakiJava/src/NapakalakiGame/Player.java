@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package NapakalakiGame;
-
 import java.util.*;
 /**
  *
@@ -101,7 +100,7 @@ public class Player {
     }
     private boolean canYouGiveMeATreasure(){
         boolean puedo=true;
-        if(visibleTreasures.isEmpty() && hiddenTreasures.isEmpty())
+        if(hiddenTreasures.isEmpty())
             puedo=false;
         return puedo;
         
@@ -229,6 +228,7 @@ public class Player {
     public String toString(){
         String cadena = "Nombre: " + name;
         cadena += "\nNivel: " + level;
+        cadena += "\nNivel de Combate: " + getCombatLevel();
         if(dead)
            cadena += "\nEstá muerto";
         else
@@ -237,11 +237,12 @@ public class Player {
             cadena += "\nPuede robar";
         else
             cadena += "\nNo puede robar";
-        cadena += "\nEnemigo: " + enemy;
-        cadena += "\nTesoros visibles: " + visibleTreasures.toString();
-        cadena += "\nTesoros ocultos: " + hiddenTreasures.toString();
-        cadena += "\nMal rollo a cumplir: " + pendingBadConsequence.toString();
-        
+        cadena += "\nEnemigo: " + enemy.getName();
+        /*cadena += "\nTesoros visibles: " + visibleTreasures.toString();
+        cadena += "\nTesoros ocultos: " + hiddenTreasures.toString();*/
+        cadena += "\nMal rollo a cumplir: ";
+        if (pendingBadConsequence != null)
+           cadena += pendingBadConsequence.toString();
         return cadena;
     }
 }

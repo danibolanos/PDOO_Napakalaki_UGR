@@ -120,12 +120,14 @@ class Player
   
   def giveMeATreasure
     indice = rand(@hiddenTreasures.length)
-    @hiddenTreasures.at(indice)
+    t = @hiddenTreasures.at(indice)
+    discardHiddenTreasure(t)
+    t
   end
   
   def canYouGiveMeATreasure
     puedo=true
-    if @visibleTreasures.empty? && @hiddenTreasures.empty? then
+    if @hiddenTreasures.empty? then
       puedo=false
     end
     puedo
@@ -287,6 +289,7 @@ class Player
   def to_s
     cadena = "Nombre: #{@name}"
     cadena += "\nNivel: #{@level}"
+    cadena += "\nNivel Combate: #{getCombatLevel}"
     if @dead then
       cadena += "\nEstá muerto"
     else
@@ -296,13 +299,15 @@ class Player
       cadena += "\nPuede robar"
     else
       cadena += "\nNo puede robar"
-      cadena += "\nEnemigo: #{@enemy}"
-      cadena += "\nTesoros visibles: #{@visibleTreasures}"
-      cadena += "\nTesoros ocultos: #{@hiddenTreasures}"
-      cadena += "\nMal rollo a cumplir: #{@pendingBadConsequence}"
     end
+      cadena += "\nEnemigo: #{@enemy.getName}"
+=begin cadena += "\nTesoros visibles: \n" + @visibleTreasures.join("\n\n")
+=end cadena += "\nTesoros ocultos: \n" + @hiddenTreasures.join("\n\n")
+      cadena += "\nMal rollo a cumplir: #{@pendingBadConsequence}"
     cadena   
   end
+  
+  protected :canYouGiveMeATreasure, :giveMeATreasure, :getCombatLevel
 end
 
 end

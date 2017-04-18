@@ -28,8 +28,12 @@ class BadConsequence
   
   def isEmpty
     vacio=false
-    if @nVisibleTreasures==0 && @nHiddenTreasures==0 && @specificVisibleTreasures.empty? && @specificHiddenTreasures.empty? then
-      vacio=true
+    if @nVisibleTreasures==-1 then
+      if @specificVisibleTreasures.empty? && @specificHiddenTreasures.empty? then
+      vacio = true
+      end
+    elsif @nVisibleTreasures==0 && @nHiddenTreasures==0
+      vacio = true
     end
     vacio
   end

@@ -31,7 +31,7 @@ public class Treasure {
     public TreasureKind getType(){
         return type;
     }
-    public String To_String(){
+    public String toString(){
         String cadena = name;
         cadena += "\nBonus: " + bonus;
         cadena += "\nTipo: " + type;

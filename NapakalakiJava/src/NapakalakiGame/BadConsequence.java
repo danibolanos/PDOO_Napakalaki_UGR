@@ -172,6 +172,7 @@ public class BadConsequence {
                cadena += "\nSpecific_Visible_Treasures_Down = " + getSpecificVisibleTreasures()
                + " / Specific_Hidden_Treasures_Down = " + getSpecificHiddenTreasures();
            }
+                
         return cadena;
     }
 }

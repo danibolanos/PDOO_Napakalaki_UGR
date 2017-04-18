@@ -6,6 +6,10 @@
 module NapakalakiGame
 
 require 'singleton'
+require_relative 'player'
+require_relative 'card_dealer'
+require_relative 'monster'
+require_relative 'combat_result'
 
 class Napakalaki
   include Singleton
@@ -13,7 +17,6 @@ class Napakalaki
   private
   
   def initialize
-    @currentPlayerIndex = nil
     @currentMonster = nil
     @currentPlayer = nil
     @players = nil
@@ -21,57 +24,107 @@ class Napakalaki
   end
 
   def initPlayers(names)
-    #No se sabe
+    @players = Array.new
+    names.each do |nombre|
+       @players << Player.new(nombre)
+    end
   end
   
   def nextPlayer
-    #No se sabe
+    index = 0
+    if @currentPlayer == nil then
+       index = rand(@players.size)
+    else
+      index = @players.index(@currentPlayer) + 1
+      if index == @players.size then
+        index = 0        
+      end
+    end
+    @currentPlayer = @players.at(index)
+    @players.at(index)
   end
   
   def nextTurnAllowed
-    #No se sabe
+    condicion = false
+    if @currentPlayer == nil || @currentPlayer.validState then
+      condicion = true
+    end
+    condicion
   end
   
   def setEnemies
-    #No se sabe
+    @players.each do |jugador|
+      enemigo = rand((@players.size)-1)
+      if enemigo == @players.index(jugador) then
+       enemigo = (@players.size)-1
+      end
+       jugador.setEnemy(@players.at(enemigo))
+    end
   end
   
   public
   
   def developCombat
-    #No se sabe
+    combatResult = @currentPlayer.combat(@currentMonster)
+    @dealer.giveMonsterBack(@currentMonster)
+    combatResult
   end
   
   def discardVisibleTreasures(treasures)
-    #No se sabe
+    treasures.each do |treasure|
+      @currentPlayer.discardVisibleTreasure(treasure)
+      @dealer.giveTreasureBack(treasure)
+    end
   end
   
   def discardHiddenTreasures(treasures)
-    #No se sabe
+    treasures.each do |treasure|
+      @currentPlayer.discardHiddenTreasure(treasure)
+      @dealer.giveTreasureBack(treasure)
+    end
   end
   
   def makeTreasuresVisible(treasures)
-    #No se sabe
+    treasures.each do |t|
+      @currentPlayer.makeTreasureVisible(t)
+    end
   end
   
   def initGame(players)
-    
+    initPlayers(players)
+    setEnemies
+    @dealer = CardDealer.instance
+    @dealer.initCards
+    nextTurn
   end
   
   def getCurrentPlayer
-    #No se sabe
+    @currentPlayer
   end
   
   def getCurrentMonster
-    #No se sabe
+    @currentMonster
   end
   
   def nextTurn
-    #No se sabe
+    stateOK = nextTurnAllowed
+    if stateOK then
+      @currentMonster = @dealer.nextMonster
+      @currentPlayer = nextPlayer
+      dead = @currentPlayer.isDead
+      if dead then
+        @currentPlayer.initTreasures
+      end
+    end
+    stateOK
   end
   
   def endOfGame(result)
-    #No se sabe
+    condicion = false
+    if result == [CombatResult::WINGAME] then
+      condicion = true
+    end
+    condicion
   end 
 end
 

@@ -39,7 +39,7 @@ class CardDealer
     @unusedTreasures << Treasure.new("Insecticida",2,TreasureKind::ONEHAND)
     @unusedTreasures << Treasure.new("Escopeta de 3 cañones",4,TreasureKind::BOTHHANDS)
     @unusedTreasures << Treasure.new("Garabato mísitco",2,TreasureKind::ONEHAND)
-    @unusedTreasures << Treasure.new("La rebeca metálica",32,TreasureKind::ARMOR)
+    @unusedTreasures << Treasure.new("La rebeca metálica",2,TreasureKind::ARMOR)
     @unusedTreasures << Treasure.new("Lanzallamas",4,TreasureKind::BOTHHANDS)
     @unusedTreasures << Treasure.new("Necrocomicón",1,TreasureKind::ONEHAND)
     @unusedTreasures << Treasure.new("Necronomicón",5,TreasureKind::BOTHHANDS)

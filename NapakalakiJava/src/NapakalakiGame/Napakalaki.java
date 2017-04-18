@@ -95,6 +95,7 @@ public class Napakalaki {
     public void initGame(ArrayList<String> players){
         initPlayers(players);
         setEnemies();
+        dealer = CardDealer.getInstance();
         dealer.initCards();
         nextTurn();
     }
