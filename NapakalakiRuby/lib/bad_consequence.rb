@@ -89,7 +89,7 @@ class BadConsequence
   end  
     
   def BadConsequence.newDeath(t)
-    new(t, Player::MAXLEVEL, BadConsequence::MAXTREASURES, BadConsequence::MAXTREASURES, Array.new, Array.new, true)
+    new(t, Player::MAXLEVEL, MAXTREASURES, MAXTREASURES, Array.new, Array.new, true)
   end  
   
   def adjustToFitTreasureLists(v, h)
