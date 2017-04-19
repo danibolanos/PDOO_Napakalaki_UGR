@@ -300,7 +300,10 @@ class Player
     else
       cadena += "\nNo puede robar"
     end
-      cadena += "\nEnemigo: #{@enemy.getName}"
+      cadena += "\nEnemigo: "
+      if @enemy != nil then
+        cadena += "#{@enemy.getName}"
+      end
 =begin cadena += "\nTesoros visibles: \n" + @visibleTreasures.join("\n\n")
 =end cadena += "\nTesoros ocultos: \n" + @hiddenTreasures.join("\n\n")
       cadena += "\nMal rollo a cumplir: #{@pendingBadConsequence}"
