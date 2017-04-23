@@ -25,8 +25,13 @@ public class BadConsequence {
     
     public boolean isEmpty(){
        boolean vacio=false;
-       if (nVisibleTreasures==0 && nHiddenTreasures==0 && specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty())
-           vacio=true;
+       if (nVisibleTreasures==-1){
+           if(specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty())
+               vacio = true;
+       }
+       else
+           if (nVisibleTreasures==0 && nHiddenTreasures==0)
+               vacio=true;
        return vacio;
     }
     
@@ -117,15 +122,21 @@ public class BadConsequence {
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
         //Quizas no sea lo mas correcto, porque no deberia modificar el mal rollo, sino 
         //devolver otro distinto
+        BadConsequence bc = new BadConsequence(this.text,false);
+        bc.levels = this.levels;
+        bc.nHiddenTreasures = this.nHiddenTreasures;
+        bc.nVisibleTreasures = this.nVisibleTreasures;
+        bc.specificHiddenTreasures = this.specificHiddenTreasures;
+        bc.specificVisibleTreasures = this.specificVisibleTreasures;
         if(nVisibleTreasures==-1){
             ArrayList<TreasureKind> visible = new ArrayList();
             for(Treasure t:v){
                 TreasureKind tipo = t.getType();
                 boolean fin=false;
-                for(int i=0; i<specificVisibleTreasures.size() && !fin; i++)
-                    if(specificVisibleTreasures.get(i)==tipo){
-                        visible.add(specificVisibleTreasures.get(i));
-                        specificVisibleTreasures.remove(i);
+                for(int i=0; i<bc.specificVisibleTreasures.size() && !fin; i++)
+                    if(bc.specificVisibleTreasures.get(i)==tipo){
+                        visible.add(bc.specificVisibleTreasures.get(i));
+                        bc.specificVisibleTreasures.remove(i);
                         fin = true;
                     }
             }
@@ -133,23 +144,23 @@ public class BadConsequence {
             for(Treasure t:h){
                 TreasureKind tipo = t.getType();
                 boolean fin=false;
-                for(int i=0; i<specificHiddenTreasures.size() && !fin; i++)
-                    if(specificHiddenTreasures.get(i)==tipo){
-                        hidden.add(specificHiddenTreasures.get(i));
-                        specificHiddenTreasures.remove(i);
+                for(int i=0; i<bc.specificHiddenTreasures.size() && !fin; i++)
+                    if(bc.specificHiddenTreasures.get(i)==tipo){
+                        hidden.add(bc.specificHiddenTreasures.get(i));
+                        bc.specificHiddenTreasures.remove(i);
                         fin = true;
                     }
             }
-            specificVisibleTreasures = visible;
-            specificHiddenTreasures = hidden;
+            bc.specificVisibleTreasures = visible;
+            bc.specificHiddenTreasures = hidden;
         }
         else{
-            if(v.size() < nVisibleTreasures)
-                nVisibleTreasures = v.size();
-            if(h.size() < nHiddenTreasures)
-                nHiddenTreasures = h.size();
+            if(v.size() < bc.getNVisibleTreasures())
+                bc.nVisibleTreasures = v.size();
+            if(h.size() < bc.getNHiddenTreasures())
+                bc.nHiddenTreasures = h.size();
         }
-        return this;
+        return bc;
     }
     
     //NO UML

@@ -66,9 +66,27 @@ public class Player {
         boolean puede = false;
         int numVisiblesTipo=0;
         TreasureKind tipo=t.getType();
-        for(Treasure tesoro:visibleTreasures){
-            if(tesoro.getType()==tipo)
-                numVisiblesTipo++;
+        if(tipo==TreasureKind.BOTHHANDS){
+            for(Treasure tesoro:visibleTreasures){
+                if(tesoro.getType()==tipo | tesoro.getType()==TreasureKind.ONEHAND)
+                    numVisiblesTipo++;
+            }
+        }
+        else{
+            if(tipo==TreasureKind.ONEHAND){
+                for(Treasure tesoro:visibleTreasures){
+                    if(tesoro.getType()==tipo)
+                        numVisiblesTipo++;
+                    if(tesoro.getType()==TreasureKind.BOTHHANDS)
+                        numVisiblesTipo+=2;
+                }
+            }
+            else{
+                for(Treasure tesoro:visibleTreasures){
+                    if(tesoro.getType()==tipo)
+                        numVisiblesTipo++;
+                }
+            }
         }
         if(tipo==TreasureKind.BOTHHANDS && numVisiblesTipo==0)
             puede=true;
@@ -175,7 +193,7 @@ public class Player {
     }
     public boolean validState(){
         boolean condicion = false;
-        if (pendingBadConsequence.isEmpty() && hiddenTreasures.size()<5)
+        if ((pendingBadConsequence==null || pendingBadConsequence.isEmpty()) && hiddenTreasures.size()<5)
             condicion = true;
         return condicion;
     }

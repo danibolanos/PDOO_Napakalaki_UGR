@@ -45,14 +45,13 @@ public class Napakalaki {
         return currentPlayer;
     }
     private boolean nextTurnAllowed(){
-        boolean permitido;
+        boolean permitido = false;
         
         if (currentPlayer == null)
             permitido = true;
         else{
             if(currentPlayer.validState())
                 permitido = true;
-            permitido = false;
         }
         
         return permitido;
