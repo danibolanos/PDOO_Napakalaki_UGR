@@ -67,6 +67,19 @@ class Napakalaki
   def developCombat
     combatResult = @currentPlayer.combat(@currentMonster)
     @dealer.giveMonsterBack(@currentMonster)
+    if(combatResult == CombatResult::LOSEANDCONVERT) then
+      card = CardDealer.instance.nextCultist
+      p = CultistPlayer.new(@currentPlayer,card)
+      @players.each do |player|
+        if(player == @currentPlayer)
+          player = p
+        end
+        if(player.enemy == @currentPlayer)
+          player.enemy = p
+        end
+      end
+      @currentPlayer = p
+    end
     combatResult
   end
   

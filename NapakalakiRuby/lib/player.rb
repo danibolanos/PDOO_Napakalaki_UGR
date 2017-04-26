@@ -150,6 +150,17 @@ class Player
     @enemy = nil
   end
   
+  def copy(p)
+    @name = p.name
+    @level = p.level
+    @dead = p.dead 
+    @pendingBadConsequence = p.pendingBadConsequence
+    @visibleTreasures = p.visibleTreasures
+    @hiddenTreasures = p.hiddenTreasures
+    @canISteal = p.canISteal
+    @enemy = p.enemy
+  end
+  
   def getName
     @name
   end
@@ -167,7 +178,7 @@ class Player
   end
   
   def combat(m)
-    myLevel = getCombatLevel
+    myLevel = getOponentLevel(m)
     monsterLevel = m.getCombatLevel
     if !canISteal then
       dice = Dice.instance
@@ -186,7 +197,11 @@ class Player
       end
     else
       applyBadConsequence(m)
+      if shouldConvert then
+        combatResult = CombatResult::LOSEANDCONVERT
+      else
       combatResult = CombatResult::LOSE
+      end
     end
     combatResult
   end
@@ -310,7 +325,21 @@ class Player
     cadena   
   end
   
-  protected :canYouGiveMeATreasure, :giveMeATreasure, :getCombatLevel
-end
-
+  def getOponentLevel(m)
+    m.getCombatLevel
+  end
+  
+  def shouldConvert
+    b=false
+    if(Dice.instance.nextNumber == 6)
+      b=true
+    end
+    b
+  end
+  
+  protected :canYouGiveMeATreasure, :giveMeATreasure, :getCombatLevel,
+    :shouldConvert, :getOponentLevel
+  attr_reader :name, :level, :dead, :pendingBadConsequence, :visibleTreasures, 
+    :hiddenTreasures, :canISteal, :enemy
+  end
 end

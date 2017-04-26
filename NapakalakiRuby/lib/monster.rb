@@ -10,13 +10,17 @@ require_relative 'bad_consequence'
 
 class Monster
   
-  public
-  
-  def initialize(n, l, b, p)
+  def initialize(n, l, badConsequence, p)
     @name = n
     @combatLevel = l
-    @badConsequence = b
+    @badConsequence = badConsequence
     @prize = p
+    @levelChangeAgainstCultistPlayer = 0
+  end
+  
+  def Monster.newLC(n,l, badConsequence, p, lC)
+    new(n, l, badConsequence, p)
+    @levelChangeAgainstCultistPlayer = lC
   end
   
   def getName
@@ -37,6 +41,10 @@ class Monster
   
   def getTreasuresGained
     @prize.getTreasures
+  end
+  
+  def getCombatLevelAgainstCultistPlayer
+    
   end
   
   def to_s
