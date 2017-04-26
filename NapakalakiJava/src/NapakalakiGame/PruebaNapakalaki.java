@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  *
- * @author danibolanos
+ * @author danibolanos & jomabose
  */
 public class PruebaNapakalaki {
     static ArrayList<Monster> monstruos = new ArrayList();

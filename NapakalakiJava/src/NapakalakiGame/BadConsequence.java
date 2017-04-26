@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  *
- * @author danibolanos
+ * @author danibolanos & jomabose
  */
 
 public class BadConsequence {
@@ -162,8 +162,6 @@ public class BadConsequence {
         }
         return bc;
     }
-    
-    //NO UML
     
     public boolean getDeath(){
         return death;

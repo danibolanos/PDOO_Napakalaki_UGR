@@ -9,16 +9,16 @@ package NapakalakiGame;
  *
  * @author danibolanos & jomabose
  */
-public class Dice {
-    private static final Dice instance = new Dice();
+public class Cultist {
+    private String name;
+    private int gainedLevels;
     
-    private Dice() { }
-    
-    public static Dice getInstance() {
-        return instance;
+    public Cultist(String name, int gainedLevels){
+        this.name = name;
+        this.gainedLevels = gainedLevels;
     }
     
-    public int nextNumber(){
-        return (int) (Math.random()*6+1);
+    public int getGainedLevels(){
+        return gainedLevels;
     }
 }
