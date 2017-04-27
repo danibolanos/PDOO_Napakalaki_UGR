@@ -70,16 +70,15 @@ class Napakalaki
     @dealer.giveMonsterBack(@currentMonster)
     if(combatResult == CombatResult::LOSEANDCONVERT) then
       card = CardDealer.instance.nextCultist
-      p = CultistPlayer.new(@currentPlayer,card)
+      sectario = CultistPlayer.new(@currentPlayer,card)
       @players.each do |player|
         if(player.enemy == @currentPlayer)
-          player.setEnemy = p
-        end
-        if(player == @currentPlayer)
-          player = p
+          player.setEnemy(sectario)
         end
       end
-      @currentPlayer = p
+      indice = @players.find_index(@currentPlayer)
+      @players[indice] = sectario
+      @currentPlayer = sectario
     end
     combatResult
   end

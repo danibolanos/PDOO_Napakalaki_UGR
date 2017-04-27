@@ -15,11 +15,7 @@ class Monster
     @combatLevel = l
     @badConsequence = badConsequence
     @prize = p
-    @levelChangeAgainstCultistPlayer = 0
-  end
-  
-  def Monster.new(n,l, badConsequence, p, lC)
-    new(n, l, badConsequence, p, lC)
+    @levelChangeAgainstCultistPlayer = lC
   end
   
   def getName
