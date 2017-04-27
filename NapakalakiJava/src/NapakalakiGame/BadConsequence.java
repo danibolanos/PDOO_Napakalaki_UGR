@@ -66,9 +66,10 @@ public class BadConsequence {
               }
            }
         }
-        else
+        else{
             if(nVisibleTreasures>0)
                 nVisibleTreasures--;
+        }
     }
     
     public void substractHiddenTreasure(Treasure t){
@@ -82,9 +83,10 @@ public class BadConsequence {
               }
            }
         }
-        else
+        else{
             if(nHiddenTreasures>0)
                 nHiddenTreasures--;
+        }
     }
     
     public BadConsequence(String t, int l, int nVisible, int nHidden){

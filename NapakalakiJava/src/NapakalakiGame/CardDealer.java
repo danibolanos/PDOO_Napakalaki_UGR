@@ -209,12 +209,12 @@ public class CardDealer {
     }
     
     private void initCultistCardDeck(){
-        unusedCultists.add(new Cultist("Sectario 1", 1));
-        unusedCultists.add(new Cultist("Sectario 2", 2));
-        unusedCultists.add(new Cultist("Sectario 3", 1));
-        unusedCultists.add(new Cultist("Sectario 4", 2));
-        unusedCultists.add(new Cultist("Sectario 5", 1));
-        unusedCultists.add(new Cultist("Sectario 6", 1));
+        unusedCultists.add(new Cultist("Sectario", 1));
+        unusedCultists.add(new Cultist("Sectario", 2));
+        unusedCultists.add(new Cultist("Sectario", 1));
+        unusedCultists.add(new Cultist("Sectario", 2));
+        unusedCultists.add(new Cultist("Sectario", 1));
+        unusedCultists.add(new Cultist("Sectario", 1));
     }
     
     private void shuffleTreasures(){

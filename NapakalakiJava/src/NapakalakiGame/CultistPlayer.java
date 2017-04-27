@@ -33,17 +33,17 @@ public class CultistPlayer extends Player{
     protected boolean shouldConvert(){
         return false;
     }
-    //@Override
-    private Treasure giveMeATreasure(){
-        int indice=(int) (Math.random()*(super.getVisibleTreasures()).size()-1);
-        Treasure tesoro=super.getVisibleTreasures().get(indice);
-        super.getVisibleTreasures().remove(indice);
+    @Override
+    protected Treasure giveMeATreasure(){
+        int indice=(int) (Math.random()*getVisibleTreasures().size()-1);
+        Treasure tesoro = getVisibleTreasures().get(indice);
+        getVisibleTreasures().remove(indice);
         return tesoro;        
     }
-    //@Override
-    private boolean canYouGiveMeATreasure(){
+    @Override
+    protected boolean canYouGiveMeATreasure(){
         boolean puedo=true;
-        if((super.getVisibleTreasures()).isEmpty())
+        if(getVisibleTreasures().isEmpty())
             puedo=false;
         return puedo;       
     }

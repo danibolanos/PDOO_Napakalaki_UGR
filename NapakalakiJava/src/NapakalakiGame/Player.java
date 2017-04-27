@@ -141,13 +141,13 @@ public class Player {
         if(visibleTreasures.isEmpty() && hiddenTreasures.isEmpty())
            dead = true;
     }
-    private Treasure giveMeATreasure(){
+    protected Treasure giveMeATreasure(){
         int indice=(int) (Math.random()*hiddenTreasures.size()-1);
-        Treasure tesoro=hiddenTreasures.get(indice);
+        Treasure tesoro = hiddenTreasures.get(indice);
         hiddenTreasures.remove(indice);
         return tesoro;
     }
-    private boolean canYouGiveMeATreasure(){
+    protected boolean canYouGiveMeATreasure(){
         boolean puedo=true;
         if(hiddenTreasures.isEmpty())
             puedo=false;
@@ -261,10 +261,12 @@ public class Player {
         return canISteal;
     }
     public void discardAllTreasures(){
-        for(Treasure treasure:visibleTreasures){
+        ArrayList<Treasure> copyVisible = new ArrayList(visibleTreasures);
+        ArrayList<Treasure> copyHidden = new ArrayList(hiddenTreasures);
+        for(Treasure treasure:copyVisible){
             discardVisibleTreasure(treasure);
         }
-        for(Treasure treasure:hiddenTreasures){
+        for(Treasure treasure:copyHidden){
             discardHiddenTreasure(treasure);
         }
     }
@@ -280,7 +282,9 @@ public class Player {
             cadena += "\nPuede robar";
         else
             cadena += "\nNo puede robar";
-        cadena += "\nEnemigo: " + enemy.getName();
+        cadena += "\nEnemigo: ";
+        if (enemy != null)
+           cadena += enemy.getName();
         /*cadena += "\nTesoros visibles: " + visibleTreasures.toString();
         cadena += "\nTesoros ocultos: " + hiddenTreasures.toString();*/
         cadena += "\nMal rollo a cumplir: ";
