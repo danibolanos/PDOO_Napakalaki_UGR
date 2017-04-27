@@ -156,7 +156,8 @@ class BadConsequence
     cadena
   end
   
-  #attr_reader :death
+  protected
+  #attr_accessor :death
   
   private_class_method :new
 
