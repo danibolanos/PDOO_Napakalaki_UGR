@@ -139,26 +139,19 @@ class Player
 
   public
   
-  def initialize(name)
+  def initialize(name, l=1, d=true, pb = nil, vt = Array.new, ht = Array.new, ci=true, e=nil)
     @name = name
-    @level = 1
-    @dead = true  
-    @pendingBadConsequence = nil
-    @visibleTreasures = Array.new
-    @hiddenTreasures = Array.new
-    @canISteal = true
-    @enemy = nil
+    @level = l
+    @dead = d 
+    @pendingBadConsequence = pb
+    @visibleTreasures = vt
+    @hiddenTreasures = ht
+    @canISteal = ci
+    @enemy = e
   end
   
-  def copy(p)
-    @name = p.name
-    @level = p.level
-    @dead = p.dead 
-    @pendingBadConsequence = p.pendingBadConsequence
-    @visibleTreasures = p.visibleTreasures
-    @hiddenTreasures = p.hiddenTreasures
-    @canISteal = p.canISteal
-    @enemy = p.enemy
+  def Player.newCopy(p)
+    new(p.getName,p.getLevels,p.isDead, p.pendingBadConsequence, p.getVisibleTreasures, p.getHiddenTreasures, p.canISteal, p.enemy)
   end
   
   def getName
@@ -339,7 +332,6 @@ class Player
   
   protected :canYouGiveMeATreasure, :giveMeATreasure, :getCombatLevel,
     :shouldConvert, :getOponentLevel
-  attr_reader :name, :level, :dead, :pendingBadConsequence, :visibleTreasures, 
-    :hiddenTreasures, :canISteal, :enemy
+  attr_reader :pendingBadConsequence, :enemy
   end
 end

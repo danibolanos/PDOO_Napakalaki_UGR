@@ -24,13 +24,13 @@ class CardDealer
   end
   
   def initTreasureCardDeck
-    @unusedTreasures << Treasure.new("¡Sí, mi amo!",3,TreasureKind::HELMET)
+    @unusedTreasures << Treasure.new("¡Sí, mi amo!",4,TreasureKind::HELMET)
     @unusedTreasures << Treasure.new("Botas de investigación",3,TreasureKind::SHOE)
     @unusedTreasures << Treasure.new("Capucha de Cthulhu",3,TreasureKind::HELMET)
     @unusedTreasures << Treasure.new("A prueba de babas",2,TreasureKind::ARMOR)
     @unusedTreasures << Treasure.new("Botas de lluvia ácida",1,TreasureKind::BOTHHANDS)
     @unusedTreasures << Treasure.new("Casco minero",2,TreasureKind::HELMET)
-    @unusedTreasures << Treasure.new("Ametralladora ACME",1,TreasureKind::BOTHHANDS)
+    @unusedTreasures << Treasure.new("Ametralladora ACME",4,TreasureKind::BOTHHANDS)
     @unusedTreasures << Treasure.new("Camiseta de la ETSIIT",1,TreasureKind::ARMOR)
     @unusedTreasures << Treasure.new("Clavo de rail ferroviario",3,TreasureKind::ONEHAND)
     @unusedTreasures << Treasure.new("Cuchillo de sushi arcano",2,TreasureKind::ONEHAND)

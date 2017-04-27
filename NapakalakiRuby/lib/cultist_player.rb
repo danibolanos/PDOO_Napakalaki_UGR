@@ -11,7 +11,14 @@ require_relative 'cultist'
     @@totalCultistPlayers = 0
     
     def initialize(p,c)
-      copy(p)
+      @name = p.getName
+      @level = p.getLevels
+      @dead = p.isDead 
+      @pendingBadConsequence = p.pendingBadConsequence
+      @visibleTreasures = p.getVisibleTreasures
+      @hiddenTreasures = p.getHiddenTreasures
+      @canISteal = p.canISteal
+      @enemy = p.enemy
       @myCultistCard = c
       @@totalCultistPlayers += 1
     end
