@@ -10,7 +10,7 @@ require_relative 'bad_consequence'
 
 class Monster
   
-  def initialize(n, l, badConsequence, p)
+  def initialize(n, l, badConsequence, p, lC=0)
     @name = n
     @combatLevel = l
     @badConsequence = badConsequence
@@ -18,9 +18,8 @@ class Monster
     @levelChangeAgainstCultistPlayer = 0
   end
   
-  def Monster.newLC(n,l, badConsequence, p, lC)
-    new(n, l, badConsequence, p)
-    @levelChangeAgainstCultistPlayer = lC
+  def Monster.new(n,l, badConsequence, p, lC)
+    new(n, l, badConsequence, p, lC)
   end
   
   def getName
@@ -44,7 +43,7 @@ class Monster
   end
   
   def getCombatLevelAgainstCultistPlayer
-    
+    result = getCombatLevel + @levelChangeAgainstCultistPlayer
   end
   
   def to_s

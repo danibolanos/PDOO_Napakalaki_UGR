@@ -10,6 +10,7 @@ require_relative 'player'
 require_relative 'card_dealer'
 require_relative 'monster'
 require_relative 'combat_result'
+require_relative 'cultist_player'
 
 class Napakalaki
   include Singleton
@@ -71,11 +72,11 @@ class Napakalaki
       card = CardDealer.instance.nextCultist
       p = CultistPlayer.new(@currentPlayer,card)
       @players.each do |player|
+        if(player.enemy == @currentPlayer)
+          player.setEnemy = p
+        end
         if(player == @currentPlayer)
           player = p
-        end
-        if(player.enemy == @currentPlayer)
-          player.enemy = p
         end
       end
       @currentPlayer = p

@@ -5,6 +5,7 @@
 module NapakalakiGame
   
 require_relative 'player'
+require_relative 'cultist'
 
   class CultistPlayer < Player
     @@totalCultistPlayers = 0
@@ -38,7 +39,7 @@ require_relative 'player'
     def giveMeATreasure
       indice = rand(@visibleTreasures.length)
       t = @visibleTreasures.at(indice)
-      discardHiddenTreasure(t)
+      discardVisibleTreasure(t)
       t
     end
     

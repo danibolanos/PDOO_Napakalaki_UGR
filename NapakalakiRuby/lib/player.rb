@@ -178,8 +178,8 @@ class Player
   end
   
   def combat(m)
-    myLevel = getOponentLevel(m)
-    monsterLevel = m.getCombatLevel
+    myLevel = getCombatLevel
+    monsterLevel = getOponentLevel(m)
     if !canISteal then
       dice = Dice.instance
       number = dice.nextNumber

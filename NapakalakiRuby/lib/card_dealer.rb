@@ -8,7 +8,7 @@ module NapakalakiGame
 require 'singleton'
 require_relative 'monster'
 require_relative 'treasure'
-require_realtive 'cultist'
+require_relative 'cultist'
 
 class CardDealer
   include Singleton
@@ -192,46 +192,46 @@ class CardDealer
     badConsequence = 
     BadConsequence.newLevelSpecificTreasures("Pierdes 1 mano visible",
     0,[TreasureKind::ONEHAND],Array.new)
-    @unusedMonsters << Monster.newLC("El mal indecible impronunciable", 10,badConsequence, prize,-2)
+    @unusedMonsters << Monster.new("El mal indecible impronunciable", 10,badConsequence, prize,-2)
     
     #Monstruo21
     prize = Prize.new(2,1)
     badConsequence = 
     BadConsequence.newLevelNumberOfTreasures("Pierdes tus tesoros visible.Jajaja",
     0,BadConsequence::MAXTREASURES,0)
-    @unusedMonsters << Monster.newLC("Testigos oculares", 6, badConsequence, prize,2)
+    @unusedMonsters << Monster.new("Testigos oculares", 6, badConsequence, prize,2)
     
     #Monstruo22
     prize = Prize.new(2,5)
     badConsequence = 
-    BadConsequence.newDeath("Hoy no es tu dia de suerte. Mueres",true)
-    @unusedMonsters << Monster.newLC("El gran cthulhu", 20, badConsequence, prize,4)
+    BadConsequence.newDeath("Hoy no es tu dia de suerte. Mueres")
+    @unusedMonsters << Monster.new("El gran cthulhu", 20, badConsequence, prize,4)
     
     #Monstruo23
     prize = Prize.new(2,1)
     badConsequence = 
     BadConsequence.newLevelNumberOfTreasures("Tu gobierno te recorta 2 niveles",
     2,0,0)
-    @unusedMonsters << Monster.newLC("Serpiente Politico", 8, badConsequence, prize,-2)
+    @unusedMonsters << Monster.new("Serpiente Politico", 8, badConsequence, prize,-2)
     
     #Monstruo24
     prize = Prize.new(1,1)
     badConsequence = 
     BadConsequence.newLevelSpecificTreasures("Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas",
     0,[TreasureKind::ARMOR,TreasureKind::HELMET],[TreasureKind::ONEHAND,TreasureKind::ONEHAND,TreasureKind::BOTHHANDS])
-    @unusedMonsters << Monster.newLC("Felpuggoth", 2,badConsequence, prize,5)
+    @unusedMonsters << Monster.new("Felpuggoth", 2,badConsequence, prize,5)
     
     #Monstruo25
     prize = Prize.new(4,2)
     badConsequence = 
     BadConsequence.newLevelNumberOfTreasures("Pierdes 2 niveles",2,0,0)
-    @unusedMonsters << Monster.newLC("Shoggoth", 16, badConsequence, prize,-4)
+    @unusedMonsters << Monster.new("Shoggoth", 16, badConsequence, prize,-4)
     
     #Monstruo25
     prize = Prize.new(1,1)
     badConsequence = 
     BadConsequence.newLevelNumberOfTreasures("Pintalabios negro. Pierdes 2 niveles",2,0,0)
-    @unusedMonsters << Monster.newLC("Lolitagooth", 2, badConsequence, prize,3)
+    @unusedMonsters << Monster.new("Lolitagooth", 2, badConsequence, prize,3)
     
   end
   
@@ -284,6 +284,12 @@ class CardDealer
     @usedMonsters << m
     @unusedMonsters.delete(m)   
     m
+  end
+  
+  def nextCultist
+    c = @unusedCultists.at(0)
+    @unusedCultists.delete_at(0)   
+    c
   end
   
   def giveTreasureBack(t)
