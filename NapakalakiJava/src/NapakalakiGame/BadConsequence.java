@@ -89,34 +89,13 @@ public class BadConsequence {
         }
     }
     
-    public BadConsequence(String t, int l, int nVisible, int nHidden){
+    public BadConsequence(String t, int l, int nVisible, int nHidden,  ArrayList<TreasureKind> v,
+        ArrayList<TreasureKind> h, boolean death){
         text = t;
         levels = l;
         nVisibleTreasures = nVisible;
         nHiddenTreasures = nHidden;
-        death = false; 
-        specificVisibleTreasures = new ArrayList();
-        specificHiddenTreasures = new ArrayList();
-    }
-    
-    public BadConsequence(String t, int l, ArrayList<TreasureKind> v,
-        ArrayList<TreasureKind> h){
-        text = t;
-        levels = l;
-        specificVisibleTreasures = v;
-        specificHiddenTreasures = h;
-        death = false;
-        //-1 Indica que el mal rollo afecta solo a tesoros específicos
-        nVisibleTreasures = -1;
-        nHiddenTreasures = -1;
-    }
-    
-    public BadConsequence(String t, boolean death){
-        text = t;
-        this.death = death;     
-        levels = Player.MAXLEVEL;
-        nVisibleTreasures = MAXTREASURES;
-        nHiddenTreasures = MAXTREASURES;
+        this.death = death; 
         specificVisibleTreasures = new ArrayList();
         specificHiddenTreasures = new ArrayList();
     }
@@ -124,7 +103,7 @@ public class BadConsequence {
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
         //Quizas no sea lo mas correcto, porque no deberia modificar el mal rollo, sino 
         //devolver otro distinto
-        BadConsequence bc = new BadConsequence(this.text,false);
+        BadConsequence bc = new DeathBadConsequence(this.text,false);
         bc.levels = this.levels;
         bc.nHiddenTreasures = this.nHiddenTreasures;
         bc.nVisibleTreasures = this.nVisibleTreasures;
