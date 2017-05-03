@@ -119,7 +119,7 @@ public class PruebaNapakalaki {
         monstruos.add(new Monster("Flecher", 2, badConsequence, prize));
         
         // Monstruo 10      
-        badConsequence = new DeathBadConsequence("Estos monstruos resultan bastante superficiales y te aburren mortalmente. Estás muerto.", true);
+        badConsequence = new DeathBadConsequence("Estos monstruos resultan bastante superficiales y te aburren mortalmente. Estás muerto.");
         prize = new Prize(2,1);
         monstruos.add(new Monster("Los Hondos", 8, badConsequence, prize));
         
@@ -140,12 +140,12 @@ public class PruebaNapakalaki {
         monstruos.add(new Monster("Pollipólipo volante", 3, badConsequence, prize));
         
         // Monstruo 14  
-        badConsequence = new DeathBadConsequence("No le hace gracia que pronuncien mal su nombre. Estás muerto.", true);
+        badConsequence = new DeathBadConsequence("No le hace gracia que pronuncien mal su nombre. Estás muerto.");
         prize = new Prize(3,1);
         monstruos.add(new Monster("Yskhtihyssg-Goth", 14, badConsequence, prize));
         
         // Monstruo 15     
-        badConsequence = new DeathBadConsequence("La familia te atrapa. Estás muerto.", true);
+        badConsequence = new DeathBadConsequence("La familia te atrapa. Estás muerto.");
         prize = new Prize(3,1);
         monstruos.add(new Monster("Familia Feliz", 1, badConsequence, prize));
         
