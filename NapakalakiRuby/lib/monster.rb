@@ -6,7 +6,10 @@
 module NapakalakiGame
   
 require_relative 'prize'
-require_relative 'bad_consequence'
+require_relative 'death_bad_consequence'
+require_relative 'numeric_bad_consequence'
+require_relative 'specific_bad_consequence'
+
 
 class Monster
   
