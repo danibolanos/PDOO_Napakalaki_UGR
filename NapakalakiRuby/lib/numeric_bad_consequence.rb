@@ -6,10 +6,20 @@ require_relative 'bad_consequence'
 
 module NapakalakiGame
   class NumericBadConsequence < BadConsequence
-    def initialize(t, l, nVisible, nHidden, d=false)
-      super(t, l, nVisible, nHidden, Array.new, Array.new, d)
+    def initialize(t, l, nVisible, nHidden)
+      bc = super(t, l)
+      @nVisibleTreasures=nVisible
+      @nHiddenTreasures=nHidden
     end
   
+    def getNVisibleTreasures
+      @nVisibleTreasures
+    end
+  
+    def getNHiddenTreasures
+      @nHiddenTreasures
+    end
+    
     def isEmpty
       vacio=false
       if @nVisibleTreasures==0 && @nHiddenTreasures==0
@@ -45,9 +55,6 @@ module NapakalakiGame
 
     def to_s
       cadena = super
-      if @levels != 0 then
-        cadena += "\nLevels_Down = #{@levels}"
-      end
       cadena += "\nRandom_Visible_Treasures_Down = #{@nVisibleTreasures} / Random_Hidden_Treasures_Down = #{@nHiddenTreasures}"
       cadena
     end

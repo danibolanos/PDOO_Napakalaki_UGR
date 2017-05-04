@@ -14,14 +14,9 @@ class BadConsequence
     
   private
   
-  def initialize(t, l, nVisible, nHidden, v, h, death)
+  def initialize(t, l)
     @text = t
     @levels = l
-    @nVisibleTreasures = nVisible
-    @nHiddenTreasures = nHidden
-    @death = death
-    @specificVisibleTreasures = v
-    @specificHiddenTreasures = h
   end
 
   public
@@ -42,7 +37,10 @@ class BadConsequence
   def getLevels
     @levels
   end
-  
+  def getDeath
+    false
+  end
+=begin  
   def getNVisibleTreasures
     @nVisibleTreasures
   end
@@ -58,7 +56,7 @@ class BadConsequence
   def getSpecificVisibleTreasures
     @specificVisibleTreasures
   end
-=begin  
+  
   def substractVisibleTreasure(t)
     if @nVisibleTreasures == -1 then
       indice = @specificVisibleTreasures.find_index(t.getType)
@@ -80,19 +78,7 @@ class BadConsequence
       @nHiddenTreasures -= 1
     end
   end
-=end
-  def BadConsequence.newLevelNumberOfTreasures(t, l, nVisible, nHidden)
-    new(t, l, nVisible, nHidden, Array.new, Array.new, false)
-  end
   
-  def BadConsequence.newLevelSpecificTreasures(t, l, v, h)
-    new(t, l, -1, -1, v, h, false)
-  end  
-    
-  def BadConsequence.newDeath(t)
-    new(t, Player::MAXLEVEL, MAXTREASURES, MAXTREASURES, Array.new, Array.new, true)
-  end
-=begin  
   def adjustToFitTreasureLists(v, h)
     if @nVisibleTreasures == -1 then
       visible = Array.new
@@ -142,6 +128,10 @@ class BadConsequence
 =end
   def to_s
     cadena = "#{@text}"
+    if @levels != 0 then
+        cadena += "\nLevels_Down = #{@levels}"
+      end
+    cadena
   end
   
   protected

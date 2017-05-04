@@ -7,9 +7,19 @@ require_relative 'bad_consequence'
 module NapakalakiGame
   class SpecificBadConsequence < BadConsequence
     def initialize(t, l, v, h)
-      super(t, l, -1, -1, v, h, false)
+      bc = super(t, l)
+      @specificVisibleTreasures = v
+      @specificHiddenTreasures = h
     end
   
+    def getSpecificHiddenTreasures
+      @specificHiddenTreasures
+    end
+  
+    def getSpecificVisibleTreasures
+      @specificVisibleTreasures
+    end
+    
     def isEmpty
       vacio=false
       if @specificVisibleTreasures.empty? && @specificHiddenTreasures.empty? then
