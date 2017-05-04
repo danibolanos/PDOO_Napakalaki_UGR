@@ -21,7 +21,7 @@ public class PruebaNapakalaki {
         }
         return tmp;
     }
-    
+    /*
     static ArrayList BadConsequenceOnlyLevel(){
         ArrayList<Monster> tmp = new ArrayList();
         boolean aniadir;
@@ -58,7 +58,7 @@ public class PruebaNapakalaki {
         }
         return tmp;
     }
-    
+    */
     /**
      * @param args the command line arguments
      */

@@ -15,13 +15,9 @@ public abstract class BadConsequence {
     
     static final int MAXTREASURES = 10;
     
-    String text;
-    int levels;
-    int nVisibleTreasures;
-    int nHiddenTreasures;
-    boolean death;
-    ArrayList<TreasureKind> specificVisibleTreasures;
-    ArrayList<TreasureKind> specificHiddenTreasures;
+    protected String text;
+    protected int levels;
+    protected boolean death;
     
     //Poner a visibilidad de paquete los atributos o hacer los setters correspondientes?
     
@@ -31,42 +27,25 @@ public abstract class BadConsequence {
         return levels;
     }
     
-    public int getNVisibleTreasures(){
-        return nVisibleTreasures;
-    }
-    
-    public int getNHiddenTreasures(){
-        return nHiddenTreasures;
-    }
-    
-    public ArrayList getSpecificHiddenTreasures(){
-        return specificHiddenTreasures;
-    }
-    
-    public ArrayList getSpecificVisibleTreasures(){
-        return specificVisibleTreasures;
-    }
-    
     public abstract void substractVisibleTreasure(Treasure t);
     
     public abstract void substractHiddenTreasure(Treasure t);
     
-    public BadConsequence(String t, int l, int nVisible, int nHidden,  ArrayList<TreasureKind> v,
-        ArrayList<TreasureKind> h, boolean death){
+    public BadConsequence(String t, int l){
         text = t;
         levels = l;
-        nVisibleTreasures = nVisible;
-        nHiddenTreasures = nHidden;
-        this.death = death; 
-        specificVisibleTreasures = new ArrayList();
-        specificHiddenTreasures = new ArrayList();
     }
  
     public abstract BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h);
     
     public boolean getDeath(){
-        return death;
+        return false;
     }
 
-    public abstract String toString();
+    public String toString(){
+        String cadena = text;
+        if(levels != 0)
+            cadena += " \nLevels_Down = " + Integer.toString(levels);
+        return cadena;
+    }
 }

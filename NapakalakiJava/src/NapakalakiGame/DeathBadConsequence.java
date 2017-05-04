@@ -12,11 +12,14 @@ package NapakalakiGame;
 public class DeathBadConsequence extends NumericBadConsequence {
     public DeathBadConsequence(String t){
         super(t, Player.MAXLEVEL, MAXTREASURES, MAXTREASURES);
-        death = true;
+    }
+    @Override
+    public boolean getDeath(){
+        return true;
     }
     @Override
     public String toString(){
-        String cadena = text;
+        String cadena = super.toString();
         cadena += "\nDeath = " + death;
         return cadena;
     }

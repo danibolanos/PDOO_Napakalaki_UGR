@@ -12,9 +12,21 @@ import java.util.ArrayList;
  * @author danibolanos & jomabose
  */
 public class SpecificBadConsequence extends BadConsequence{
+        private ArrayList<TreasureKind> specificVisibleTreasures;
+        private ArrayList<TreasureKind> specificHiddenTreasures;
+    
         public SpecificBadConsequence(String t, int l, ArrayList<TreasureKind> v,
         ArrayList<TreasureKind> h){
-            super(t, l, 0, 0, v, h, false);
+            super(t, l);
+            specificVisibleTreasures = v;
+            specificHiddenTreasures = h;
+        }
+        public ArrayList getSpecificHiddenTreasures(){
+            return specificHiddenTreasures;
+        }
+    
+        public ArrayList getSpecificVisibleTreasures(){
+            return specificVisibleTreasures;
         }
        @Override
         public boolean isEmpty(){
@@ -47,47 +59,41 @@ public class SpecificBadConsequence extends BadConsequence{
         }
         @Override
         public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
-            BadConsequence bc = new SpecificBadConsequence(text, levels, specificVisibleTreasures, specificHiddenTreasures);
-            bc.nHiddenTreasures = 0;
-            bc.nVisibleTreasures = 0;
-
             ArrayList<TreasureKind> visible = new ArrayList();
+            ArrayList<TreasureKind> specificVisible = new ArrayList(specificVisibleTreasures);
             for(Treasure t:v){
                 TreasureKind tipo = t.getType();
                 boolean fin=false;
-                for(int i=0; i<bc.specificVisibleTreasures.size() && !fin; i++)
-                    if(bc.specificVisibleTreasures.get(i)==tipo){
-                        visible.add(bc.specificVisibleTreasures.get(i));
-                        bc.specificVisibleTreasures.remove(i);
+                for(int i=0; i<specificVisible.size() && !fin; i++)
+                    if(specificVisible.get(i)==tipo){
+                        visible.add(specificVisible.get(i));
+                        specificVisible.remove(i);
                         fin = true;
                     }
             }
             ArrayList<TreasureKind> hidden = new ArrayList();
+            ArrayList<TreasureKind> specificHidden = new ArrayList();
             for(Treasure t:h){
                 TreasureKind tipo = t.getType();
                 boolean fin=false;
-                for(int i=0; i<bc.specificHiddenTreasures.size() && !fin; i++)
-                    if(bc.specificHiddenTreasures.get(i)==tipo){
-                        hidden.add(bc.specificHiddenTreasures.get(i));
-                        bc.specificHiddenTreasures.remove(i);
+                for(int i=0; i<specificHidden.size() && !fin; i++)
+                    if(specificHidden.get(i)==tipo){
+                        hidden.add(specificHidden.get(i));
+                        specificHidden.remove(i);
                         fin = true;
                     }
             }
-            bc.specificVisibleTreasures = visible;
-            bc.specificHiddenTreasures = hidden;
-            
+            specificVisible= visible;
+            specificHidden = hidden;
+            BadConsequence bc = new SpecificBadConsequence(text, levels, specificVisible, specificHidden);
             return bc;
         }
         @Override
         public String toString(){
-           String cadena = text; 
-           
-           if(levels != 0)
-               cadena += " \nLevels_Down = " + Integer.toString(levels);
-
-            cadena += "\nSpecific_Visible_Treasures_Down = " + getSpecificVisibleTreasures()
-            + " / Specific_Hidden_Treasures_Down = " + getSpecificHiddenTreasures();
-                
-            return cadena;
+           String cadena = super.toString();
+           cadena += "\nSpecific_Visible_Treasures_Down = " + getSpecificVisibleTreasures()
+           + " / Specific_Hidden_Treasures_Down = " + getSpecificHiddenTreasures();
+     
+           return cadena;
         }
 }
