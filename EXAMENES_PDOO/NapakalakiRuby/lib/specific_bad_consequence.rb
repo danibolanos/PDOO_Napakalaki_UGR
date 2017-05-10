@@ -79,9 +79,6 @@ module NapakalakiGame
 
     def to_s
       cadena = super
-      if @levels != 0 then
-        cadena += "\nLevels_Down = #{@levels}"
-      end
       cadena += "\nSpecific_Visible_Treasures_Down = #{@specificVisibleTreasures} / Specific_Hidden_Treasures_Down = #{@specificHiddenTreasures}" 
       cadena
     end

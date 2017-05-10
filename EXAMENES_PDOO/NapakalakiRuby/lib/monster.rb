@@ -48,6 +48,13 @@ class Monster
   def to_s
     cadena = "Name: #{@name} \nCombat_Level: #{@combatLevel}"
     cadena += "\nPrize: #{@prize} \nBad_Consequence: #{@badConsequence}"
+    if @levelChangeAgainstCultistPlayer != 0
+      if @levelChangeAgainstCultistPlayer > 0
+       cadena += "\n+#{@levelChangeAgainstCultistPlayer} contra Sectarios"
+      else
+       cadena += "\n#{@levelChangeAgainstCultistPlayer} contra Sectarios"
+    end
+    end
     cadena += "\n\n"
     cadena
   end

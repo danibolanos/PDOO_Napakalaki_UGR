@@ -57,5 +57,13 @@ require_relative 'cultist'
       end
       puedo
     end
+    
+    public
+    
+    def to_s
+      cadena = super
+      cadena += "\n'#{@name} es Sectario'\n"
+      cadena
+    end
   end
 end
