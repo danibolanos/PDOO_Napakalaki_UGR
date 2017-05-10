@@ -8,171 +8,44 @@ import java.util.*;
 
 /**
  *
- * @author danibolanos
+ * @author danibolanos & jomabose
  */
 
-public class BadConsequence {
+public abstract class BadConsequence {
     
     static final int MAXTREASURES = 10;
     
-    private String text;
-    private int levels;
-    private int nVisibleTreasures;
-    private int nHiddenTreasures;
-    private boolean death;
-    private ArrayList<TreasureKind> specificVisibleTreasures;
-    private ArrayList<TreasureKind> specificHiddenTreasures;
+    protected String text;
+    protected int levels;
+    protected boolean death;
     
-    public boolean isEmpty(){
-       boolean vacio=false;
-       if (nVisibleTreasures==0 && nHiddenTreasures==0 && specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty())
-           vacio=true;
-       return vacio;
-    }
+    //Poner a visibilidad de paquete los atributos o hacer los setters correspondientes?
+    
+    public abstract boolean isEmpty();
     
     public int getLevels(){
         return levels;
     }
     
-    public int getNVisibleTreasures(){
-        return nVisibleTreasures;
-    }
+    public abstract void substractVisibleTreasure(Treasure t);
     
-    public int getNHiddenTreasures(){
-        return nHiddenTreasures;
-    }
+    public abstract void substractHiddenTreasure(Treasure t);
     
-    public ArrayList getSpecificHiddenTreasures(){
-        return specificHiddenTreasures;
-    }
-    
-    public ArrayList getSpecificVisibleTreasures(){
-        return specificVisibleTreasures;
-    }
-    
-    public void substractVisibleTreasure(Treasure t){
-        if(nVisibleTreasures==-1){
-           boolean quitado=false;
-           TreasureKind tipo=t.getType();
-           for(int i=0; i<specificVisibleTreasures.size() && !quitado;i++){
-              if(specificVisibleTreasures.get(i)==tipo){
-                 specificVisibleTreasures.remove(i);
-                 quitado=true;
-              }
-           }
-        }
-        else
-            if(nVisibleTreasures>0)
-                nVisibleTreasures--;
-    }
-    
-    public void substractHiddenTreasure(Treasure t){
-        if(nHiddenTreasures==-1){
-           boolean quitado=false;
-           TreasureKind tipo=t.getType();
-           for(int i=0; i<specificHiddenTreasures.size() && !quitado;i++){
-              if(specificHiddenTreasures.get(i)==tipo){
-                specificHiddenTreasures.remove(i);
-                quitado=true;
-              }
-           }
-        }
-        else
-            if(nHiddenTreasures>0)
-                nHiddenTreasures--;
-    }
-    
-    public BadConsequence(String t, int l, int nVisible, int nHidden){
+    public BadConsequence(String t, int l){
         text = t;
         levels = l;
-        nVisibleTreasures = nVisible;
-        nHiddenTreasures = nHidden;
-        death = false; 
-        specificVisibleTreasures = new ArrayList();
-        specificHiddenTreasures = new ArrayList();
-    }
-    
-    public BadConsequence(String t, int l, ArrayList<TreasureKind> v,
-        ArrayList<TreasureKind> h){
-        text = t;
-        levels = l;
-        specificVisibleTreasures = v;
-        specificHiddenTreasures = h;
-        death = false;
-        //-1 Indica que el mal rollo afecta solo a tesoros específicos
-        nVisibleTreasures = -1;
-        nHiddenTreasures = -1;
-    }
-    
-    public BadConsequence(String t, boolean death){
-        text = t;
-        this.death = death;     
-        levels = Integer.MAX_VALUE;
-        nVisibleTreasures = Integer.MAX_VALUE;
-        nHiddenTreasures = Integer.MAX_VALUE;
-        specificVisibleTreasures = new ArrayList();
-        specificHiddenTreasures = new ArrayList();
     }
  
-    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
-        //Quizas no sea lo mas correcto, porque no deberia modificar el mal rollo, sino 
-        //devolver otro distinto
-        if(nVisibleTreasures==-1){
-            ArrayList<TreasureKind> visible = new ArrayList();
-            for(Treasure t:v){
-                TreasureKind tipo = t.getType();
-                boolean fin=false;
-                for(int i=0; i<specificVisibleTreasures.size() && !fin; i++)
-                    if(specificVisibleTreasures.get(i)==tipo){
-                        visible.add(specificVisibleTreasures.get(i));
-                        specificVisibleTreasures.remove(i);
-                        fin = true;
-                    }
-            }
-            ArrayList<TreasureKind> hidden = new ArrayList();
-            for(Treasure t:h){
-                TreasureKind tipo = t.getType();
-                boolean fin=false;
-                for(int i=0; i<specificHiddenTreasures.size() && !fin; i++)
-                    if(specificHiddenTreasures.get(i)==tipo){
-                        hidden.add(specificHiddenTreasures.get(i));
-                        specificHiddenTreasures.remove(i);
-                        fin = true;
-                    }
-            }
-            specificVisibleTreasures = visible;
-            specificHiddenTreasures = hidden;
-        }
-        else{
-            if(v.size() < nVisibleTreasures)
-                nVisibleTreasures = v.size();
-            if(h.size() < nHiddenTreasures)
-                nHiddenTreasures = h.size();
-        }
-        return this;
-    }
-    
-    //NO UML
+    public abstract BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h);
     
     public boolean getDeath(){
-        return death;
+        return false;
     }
 
     public String toString(){
-        String cadena = text; 
-           if(death)
-               cadena += "\nDeath = " + death;
-           else{
-           if(levels != 0)
-               cadena += " \nLevels_Down = " + Integer.toString(levels);
-           if(nVisibleTreasures != -1 && (nVisibleTreasures != 0 || nHiddenTreasures !=0))
-               cadena += "\nRandom_Visible_Treasures_Down = " + Integer.toString(nVisibleTreasures) 
-               + " / Random_Hidden_Treasures_Down = " + Integer.toString(nHiddenTreasures);
-           if(nVisibleTreasures == -1)
-               cadena += "\nSpecific_Visible_Treasures_Down = " + getSpecificVisibleTreasures()
-               + " / Specific_Hidden_Treasures_Down = " + getSpecificHiddenTreasures();
-           }
-                
+        String cadena = text;
+        if(levels != 0)
+            cadena += " \nLevels_Down = " + Integer.toString(levels);
         return cadena;
     }
 }

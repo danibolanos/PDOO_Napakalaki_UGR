@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  *
- * @author danibolanos
+ * @author danibolanos & jomabose
  */
 
 public class Monster {
@@ -16,12 +16,21 @@ public class Monster {
     private int combatLevel;
     private Prize prize;
     private BadConsequence badConsequence;
+    private int levelChangeAgainstCultistPlayer = 0;
     
     public Monster(String n, int l, BadConsequence b, Prize p){
         name = n;
         combatLevel = l;
         badConsequence = b;
         prize = p;
+    }
+    
+    public Monster(String n, int l, BadConsequence badConsequence, Prize p, int lC){
+        name = n;
+        combatLevel = l;
+        this.badConsequence = badConsequence;
+        prize = p;
+        levelChangeAgainstCultistPlayer = lC;
     }
     
     public String getName(){
@@ -44,10 +53,12 @@ public class Monster {
         return prize.getTreasures();
     }
     
-    //NO UML
-    
     public Prize getPrize(){
         return prize;
+    }
+    
+    public int getCombatLevelAgainstCultistPlayer(){
+        return getCombatLevel()+levelChangeAgainstCultistPlayer;
     }
     
     public String toString(){

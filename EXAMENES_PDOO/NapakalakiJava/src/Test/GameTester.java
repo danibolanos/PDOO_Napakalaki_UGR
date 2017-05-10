@@ -35,14 +35,14 @@ public class GameTester {
       currentPlayer = game.getCurrentPlayer();
       do { // Mientras el jugador se decide a conocer al monstruo
         System.out.println ("******* ******* ******* ******* ******* ******* *******");
-        System.out.println ("\n\n Turno de: " + currentPlayer.toString());
+        System.out.println ("\n\nTurno de: " + currentPlayer.toString());
         command = getCommandBeforeKnowingMonster ();
         command = processCommand (command, currentPlayer);        
       } while (command != Command.Exit && command != Command.ShowMonster);
       if (command == Command.ShowMonster) {
         do { // Mientras el jugador se decida a combatir 
           System.out.println ("******* ******* ******* ******* ******* ******* *******");
-          System.out.println ("\n\n Turno de: " + currentPlayer.toString());
+          System.out.println ("\n\nTurno de: " + currentPlayer.toString());
           command = getCommandBeforeFighting ();
           command = processCommand (command, currentPlayer);
         } while (command != Command.Exit && command != Command.Combat);
@@ -54,16 +54,21 @@ public class GameTester {
               System.out.println ("\n\n ¡¡¡ H A S   G A N A D O   L A   P A R T I D A !!!");
               break;
             case WIN :
-              System.out.println ("\n\n Ganaste el combate");
+              System.out.println ("\n\nGanaste el combate");
               break;
             case LOSE :
-              System.out.println ("\n\n Has perdido el combate, te toca cumplir el mal rollo");
+              System.out.println ("\n\nHas perdido el combate, te toca cumplir el mal rollo");
               break;
+            case LOSEANDCONVERT : 
+              System.out.println ("\n\nHas perdido el combate, y te has convertido en sectario"); 
+              System.out.println ("\nNo obstante, tienes que cumplir el mal rollo"); 
+              currentPlayer = game.getCurrentPlayer(); 
+              break; 
           }
           if (combatResult != CombatResult.WINGAME) {
             do { // Hasta que se avance de turno 
               System.out.println ("******* ******* ******* ******* ******* ******* *******");
-              System.out.println ("\n\n Turno de: " + currentPlayer.toString());
+              System.out.println ("\n\nTurno de: " + currentPlayer.toString());
               if (currentPlayer.canISteal())
                 command = getCommandAfterFighting();
               else 
@@ -132,7 +137,7 @@ public class GameTester {
     
     validInput = true;
     option = Command.GoBack.menu;
-    System.out.print ("\n Elige un tesoro: ");
+    System.out.print ("\nElige un tesoro: ");
     capture = in.nextLine();
     try {
       option = Integer.valueOf(capture);
@@ -150,7 +155,7 @@ public class GameTester {
   }
   
   private void inputErrorMessage () {
-    System.out.println ("\n\n ¡¡¡ E R R O R !!! \n\n Selección errónea. Inténtalo de nuevo.\n\n");    
+    System.out.println ("\n\n¡¡¡ E R R O R !!! \n\n Selección errónea. Inténtalo de nuevo.\n\n");    
   }
   
   private void manageDiscardTreasures (boolean visible, Player aPlayer) {
@@ -204,7 +209,7 @@ public class GameTester {
       for (Command c : menu) { // se muestran las opciones del menú
         System.out.println (String.format ("%2d",c.menu) + " : " + c.text);
       } 
-      System.out.print ("\n Elige una opción: ");
+      System.out.print ("\nElige una opción: ");
       capture = in.nextLine();
       try {
         option = Integer.valueOf(capture);
@@ -254,9 +259,9 @@ public class GameTester {
       case StealTreasure :
         aTreasure = aPlayer.stealTreasure ();
         if (aTreasure == null)
-          System.out.println ("\n\n No has podido robar nada \n\n");
+          System.out.println ("\n\nNo has podido robar nada \n\n");
         else
-          System.out.println ("\n\n Has robado este tesoro: \n\n" + aTreasure.toString());
+          System.out.println ("\n\nHas robado este tesoro: \n\n" + aTreasure.toString());
         break;
       case NextTurn :
         if (! game.nextTurn ()) {

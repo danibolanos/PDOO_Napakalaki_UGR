@@ -8,7 +8,7 @@ package NapakalakiGame;
 import java.util.*;
 /**
  *
- * @author jomabose
+ * @author danibolanos & jomabose
  */
 public class Napakalaki {
     
@@ -45,14 +45,13 @@ public class Napakalaki {
         return currentPlayer;
     }
     private boolean nextTurnAllowed(){
-        boolean permitido;
+        boolean permitido = false;
         
         if (currentPlayer == null)
             permitido = true;
         else{
             if(currentPlayer.validState())
                 permitido = true;
-            permitido = false;
         }
         
         return permitido;
@@ -72,6 +71,16 @@ public class Napakalaki {
     }
     public CombatResult developCombat(){
         CombatResult combatResult = currentPlayer.combat(currentMonster);
+        if(combatResult==CombatResult.LOSEANDCONVERT){
+           CultistPlayer sectario = new CultistPlayer(currentPlayer, CardDealer.getInstance().nextCultist());
+           for(Player jugador:players){
+               if(jugador.getEnemy()==currentPlayer)
+                   jugador.setEnemy(sectario);
+           }           
+           int indiceCurrentPlayer = players.indexOf(currentPlayer);
+           players.set(indiceCurrentPlayer, sectario);
+           currentPlayer = sectario;
+        }
         CardDealer.getInstance().giveMonsterBack(currentMonster);
         return combatResult;
     }

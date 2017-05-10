@@ -7,7 +7,7 @@ package NapakalakiGame;
 
 /**
  *
- * @author danibolanos
+ * @author danibolanos & jomabose
  */
 public class Dice {
     private static final Dice instance = new Dice();

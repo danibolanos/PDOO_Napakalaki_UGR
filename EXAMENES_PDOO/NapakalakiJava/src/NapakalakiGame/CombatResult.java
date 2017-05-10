@@ -7,8 +7,8 @@ package NapakalakiGame;
 
 /**
  *
- * @author danibolanos
+ * @author danibolanos & jomabose
  */
 public enum CombatResult {
-    WINGAME, WIN, LOSE;
+    WINGAME, WIN, LOSE, LOSEANDCONVERT;
 }

@@ -7,7 +7,7 @@ package NapakalakiGame;
 
 /**
  *
- * @author danibolanos
+ * @author danibolanos & jomabose
  */
 
 public enum TreasureKind {
