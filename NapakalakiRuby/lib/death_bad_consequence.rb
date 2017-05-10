@@ -15,7 +15,8 @@ module NapakalakiGame
     end
     
     def to_s
-      cadena = super + "\nDeath: #{@death}"
+      cadena = super 
+      cadena += "\nDeath: #{@death}"
     end
     
   end

@@ -312,8 +312,8 @@ class Player
       if @enemy != nil then
         cadena += "#{@enemy.getName}"
       end
-=begin cadena += "\nTesoros visibles: \n" + @visibleTreasures.join("\n\n")
-=end cadena += "\nTesoros ocultos: \n" + @hiddenTreasures.join("\n\n")
+=begin cadena += "\n\nTesoros visibles: \n\n" + @visibleTreasures.join("\n\n")
+=end cadena += "\n\nTesoros ocultos: \n\n" + @hiddenTreasures.join("\n\n") + "\n"
       cadena += "\nMal rollo a cumplir: #{@pendingBadConsequence}"
     cadena   
   end
