@@ -5,6 +5,7 @@
  */
 package NapakalakiGame;
 import java.util.*;
+import GUI.Dice;
 /**
  *
  * @author danibolanos & jomabose

@@ -20,7 +20,7 @@ public class DeathBadConsequence extends NumericBadConsequence {
     @Override
     public String toString(){
         String cadena = super.toString();
-        cadena += "\nDeath = " + death;
+        cadena += "\nDeath = " + getDeath();
         return cadena;
     }
 }

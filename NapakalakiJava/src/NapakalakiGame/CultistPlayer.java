@@ -50,4 +50,10 @@ public class CultistPlayer extends Player{
     public static int getTotalCultistPlayers(){
         return totalCultistPlayers;
     }
+    @Override
+    public String toString(){
+        String cadena = super.toString();
+        cadena += "\n" + "*" + this.getName()+" es Sectario*";
+        return cadena;
+    }
 }
