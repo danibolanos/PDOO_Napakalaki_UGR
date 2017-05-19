@@ -8,6 +8,7 @@ package NapakalakiGame;
 import GUI.NapakalakiView;
 import GUI.Dice;
 import GUI.PlayerNamesCapture;
+import GUI.PlayerView;
 import GUI.TreasureView;
 import java.util.*;
 
@@ -27,11 +28,11 @@ public class Main {
         napakalakiView.setNapakalaki(game);
         ArrayList<String> names = new ArrayList();
         PlayerNamesCapture namesCapture = new PlayerNamesCapture(napakalakiView, true);
-        TreasureView treasureView = napakalakiView.getTreasureView();
-        Treasure tesoro = new Treasure("¡Sí, mi amo!",4,TreasureKind.HELMET);
-        treasureView.setTreasure(tesoro);
         names = namesCapture.getNames();
         game.initGame(names);
+        PlayerView playerView = napakalakiView.getPlayerView();
+        Player jugador1 = new Player(names.get(0));
+        playerView.setPlayer(jugador1);
         napakalakiView.setVisible(true);
     }
     

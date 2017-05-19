@@ -19,7 +19,7 @@ public class CultistPlayer extends Player{
        totalCultistPlayers++;
     }
     @Override
-    protected int getCombatLevel(){
+    public int getCombatLevel(){
         int levelPlayerAdded = (int) (super.getCombatLevel()*0.7);
         int combatLevel = super.getCombatLevel() + levelPlayerAdded + 
         myCultistCard.getGainedLevels()*totalCultistPlayers;

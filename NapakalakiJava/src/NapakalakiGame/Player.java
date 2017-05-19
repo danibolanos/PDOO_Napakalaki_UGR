@@ -53,7 +53,7 @@ public class Player {
             sectario = true;
         return sectario;            
     }
-    protected int getCombatLevel(){
+    public int getCombatLevel(){
         int clevel = level;
         for(int i=0;i<visibleTreasures.size();i++)
             clevel+=visibleTreasures.get(i).getBonus();
@@ -239,7 +239,7 @@ public class Player {
     public int getLevels(){
         return level;
     }
-    protected Player getEnemy(){
+    public Player getEnemy(){
         return enemy;
     }
     public Treasure stealTreasure(){

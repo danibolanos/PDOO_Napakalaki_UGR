@@ -52,10 +52,13 @@ public class TreasureView extends javax.swing.JPanel {
 
         kind.setText("Tipo");
 
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
         jLabel1.setText("Nombre:");
 
+        jLabel2.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
         jLabel2.setText("Bonus:");
 
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
         jLabel3.setText("Tipo:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -73,7 +76,7 @@ public class TreasureView extends javax.swing.JPanel {
                     .addComponent(kind)
                     .addComponent(bonus)
                     .addComponent(name))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

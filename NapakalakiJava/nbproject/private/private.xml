@@ -5,9 +5,11 @@
         <group>
             <file>file:/home/danibolanos/Escritorio/NapakalakiJava/src/GUI/PlayerNamesCapture.java</file>
             <file>file:/home/danibolanos/Escritorio/NapakalakiJava/src/GUI/NapakalakiView.java</file>
+            <file>file:/home/danibolanos/Escritorio/NapakalakiJava/src/NapakalakiGame/CultistPlayer.java</file>
             <file>file:/home/danibolanos/Escritorio/NapakalakiJava/src/GUI/TreasureView.java</file>
-            <file>file:/home/danibolanos/Escritorio/NapakalakiJava/src/NapakalakiGame/CardDealer.java</file>
             <file>file:/home/danibolanos/Escritorio/NapakalakiJava/src/NapakalakiGame/Main.java</file>
+            <file>file:/home/danibolanos/Escritorio/NapakalakiJava/src/GUI/PlayerView.java</file>
+            <file>file:/home/danibolanos/Escritorio/NapakalakiJava/src/NapakalakiGame/Player.java</file>
         </group>
     </open-files>
 </project-private>
