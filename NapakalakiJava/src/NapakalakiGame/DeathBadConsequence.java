@@ -21,6 +21,7 @@ public class DeathBadConsequence extends NumericBadConsequence {
     public String toString(){
         String cadena = super.toString();
         cadena += "\nDeath = " + getDeath();
+        
         return cadena;
     }
 }

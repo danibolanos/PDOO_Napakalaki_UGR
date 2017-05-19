@@ -23,6 +23,7 @@ public class CultistPlayer extends Player{
         int levelPlayerAdded = (int) (super.getCombatLevel()*0.7);
         int combatLevel = super.getCombatLevel() + levelPlayerAdded + 
         myCultistCard.getGainedLevels()*totalCultistPlayers;
+        
         return combatLevel;
     }
     @Override
@@ -38,13 +39,16 @@ public class CultistPlayer extends Player{
         int indice=(int) (Math.random()*getVisibleTreasures().size()-1);
         Treasure tesoro = getVisibleTreasures().get(indice);
         getVisibleTreasures().remove(indice);
+        
         return tesoro;        
     }
     @Override
     protected boolean canYouGiveMeATreasure(){
         boolean puedo=true;
+        
         if(getVisibleTreasures().isEmpty())
             puedo=false;
+        
         return puedo;       
     }
     public static int getTotalCultistPlayers(){
@@ -53,7 +57,8 @@ public class CultistPlayer extends Player{
     @Override
     public String toString(){
         String cadena = super.toString();
-        cadena += "\n" + "*" + this.getName()+" es Sectario*";
+        cadena += "\n\n" + "*" + this.getName()+" es Sectario*";
+        
         return cadena;
     }
 }

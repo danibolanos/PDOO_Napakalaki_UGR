@@ -5,30 +5,29 @@
  */
 package GUI;
 
-import NapakalakiGame.Treasure;
+import NapakalakiGame.Prize;
 
 /**
  *
  * @author danibolanos & jomabose
  */
-public class TreasureView extends javax.swing.JPanel {
-    
-    Treasure treasureModel;
+public class PrizeView extends javax.swing.JPanel {
 
+    Prize prizeModel;
+    
     /**
-     * Creates new form TreasureView
+     * Creates new form PrizeView
      */
-    public TreasureView() {
+    public PrizeView() {
         initComponents();
     }
     
-    public void setTreasure(Treasure aTreasure){
-       treasureModel = aTreasure;
+    public void setPrize(Prize aPrize){
+       prizeModel = aPrize;
        
-       this.name.setText(treasureModel.getName());
-       this.bonus.setText(Integer.toString(treasureModel.getBonus()));
+       this.levels.setText(Integer.toString(prizeModel.getLevels()));
+       this.treasures.setText(Integer.toString(prizeModel.getTreasures()));
        
-       this.kind.setText(treasureModel.getType().toString());
        repaint();
     }
 
@@ -41,71 +40,56 @@ public class TreasureView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        name = new javax.swing.JLabel();
-        bonus = new javax.swing.JLabel();
-        kind = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-
-        name.setText("Nombre");
-
-        bonus.setText("Bonus");
-
-        kind.setText("Tipo");
+        levels = new javax.swing.JLabel();
+        treasures = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
-        jLabel1.setText("Nombre:");
+        jLabel1.setText("Niveles:");
 
         jLabel2.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
-        jLabel2.setText("Bonus:");
+        jLabel2.setText("Tesoros:");
 
-        jLabel3.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
-        jLabel3.setText("Tipo:");
+        levels.setText("levels");
+
+        treasures.setText("treasures");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(37, 37, 37)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(kind)
-                    .addComponent(bonus)
-                    .addComponent(name))
-                .addContainerGap(114, Short.MAX_VALUE))
+                    .addComponent(levels)
+                    .addComponent(treasures))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(name)
-                    .addComponent(jLabel1))
-                .addGap(34, 34, 34)
+                    .addComponent(jLabel1)
+                    .addComponent(levels))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bonus)
-                    .addComponent(jLabel2))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kind)
-                    .addComponent(jLabel3))
-                .addGap(77, 77, 77))
+                    .addComponent(jLabel2)
+                    .addComponent(treasures))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bonus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel kind;
-    private javax.swing.JLabel name;
+    private javax.swing.JLabel levels;
+    private javax.swing.JLabel treasures;
     // End of variables declaration//GEN-END:variables
 }

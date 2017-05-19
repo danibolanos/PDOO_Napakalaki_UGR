@@ -65,12 +65,16 @@ public class Monster {
         String cadena = "Name : " + name + "\nCombat_Level : " + Integer.toString(combatLevel) 
         + "\nPrize : " + prize.toString() + "\nBad_Consequence : " 
         + badConsequence.toString();
+        
         if (levelChangeAgainstCultistPlayer != 0){
+            
             if (levelChangeAgainstCultistPlayer > 0)
               cadena += "\n+" + levelChangeAgainstCultistPlayer + " contra Sectarios";
+            
             else
               cadena += "\n" + levelChangeAgainstCultistPlayer + " contra Sectarios";
         }
+        
         return cadena;
     }
 }

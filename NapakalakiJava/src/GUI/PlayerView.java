@@ -28,19 +28,24 @@ public class PlayerView extends javax.swing.JPanel {
     
     public void setPlayer(Player p){
        playerModel = p;
+       
        this.name.setText(playerModel.getName());
        this.level.setText(Integer.toString(playerModel.getLevels()));
        this.combatLevel.setText(Integer.toString(playerModel.getCombatLevel()));
        this.canISteal.setText(Boolean.toString(playerModel.canISteal()));
        this.death.setText(Boolean.toString(playerModel.isDead()));
+       
        if(playerModel.getEnemy()!=null)
           this.enemy.setText(playerModel.getEnemy().getName());
+       
        this.cultist.setText(Boolean.toString(playerModel instanceof CultistPlayer));
        this.nCultist.setText(Integer.toString(CultistPlayer.getTotalCultistPlayers()));
        // Incluir instrucciones para actualizar su nombre, nivel, etc.
        // A continuación se actualizan sus tesoros
+       
        fillTreasurePanel (visibleTreasures, playerModel.getVisibleTreasures());
        fillTreasurePanel (hiddenTreasures, playerModel.getHiddenTreasures());
+       
        repaint();
        revalidate();
     }

@@ -235,36 +235,48 @@ public class CardDealer {
     
     public Treasure nextTreasure(){
         Treasure dar;
+        
         if(unusedTreasures.isEmpty()){
+            
             for(int i=0;i<usedTreasures.size();i++){
                 unusedTreasures.add(usedTreasures.get(0));
                 usedTreasures.remove(0);
             }
+            
             shuffleTreasures();
         }
+        
         dar=unusedTreasures.get(0);
         unusedTreasures.remove(0);
+        
         return dar;
     }
     
     public Monster nextMonster(){
         Monster dar;
+        
         if(unusedMonsters.isEmpty()){
+            
             for(int i=0;i<usedMonsters.size();i++){
                 unusedMonsters.add(usedMonsters.get(0));
                 usedMonsters.remove(0);
             }
+            
             shuffleTreasures();
         }
+        
         dar=unusedMonsters.get(0);
         unusedMonsters.remove(0);
+        
         return dar;
     }
     
     public Cultist nextCultist(){
         Cultist dar;
+        
         dar=unusedCultists.get(0);
         unusedCultists.remove(0);
+        
         return dar;        
     }
     
@@ -289,6 +301,7 @@ public class CardDealer {
         cadena += "\nTesoros usados: " + usedTreasures.toString();
         cadena += "\nMonstruos sin usar: " + unusedMonsters.toString();
         cadena += "\nMonstruos sin usar: " + usedMonsters.toString() + "\n";
+        
         return cadena;
     }
 }

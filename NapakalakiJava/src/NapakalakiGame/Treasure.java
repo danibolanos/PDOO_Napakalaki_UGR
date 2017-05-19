@@ -35,6 +35,7 @@ public class Treasure {
         String cadena = name;
         cadena += "\nBonus: " + bonus;
         cadena += "\nTipo: " + type;
+        
         return cadena;
     }
 }

@@ -41,11 +41,17 @@ public abstract class BadConsequence {
     public boolean getDeath(){
         return false;
     }
+    
+    public String getText(){
+        return text;
+    }
 
     public String toString(){
         String cadena = text;
+        
         if(levels != 0)
             cadena += " \nLevels_Down = " + Integer.toString(levels);
+        
         return cadena;
     }
 }

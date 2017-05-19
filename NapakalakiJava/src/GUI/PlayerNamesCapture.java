@@ -23,6 +23,7 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.addWindowListener(new WindowAdapter(){
+            
             @Override
             public void windowClosing (WindowEvent e){
                 System.exit(0);
@@ -150,6 +151,7 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
      */
     public ArrayList<String> getNames() {
         this.setVisible(true);
+        
         return names;
     }
 

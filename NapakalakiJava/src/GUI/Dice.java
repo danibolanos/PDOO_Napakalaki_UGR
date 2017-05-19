@@ -38,7 +38,7 @@ public class Dice extends javax.swing.JDialog {
   public static Dice getInstance() {
       return instance;
   }
-  
+
   private int privateNextNumber() {
     return (generator.nextInt(6)+1);
   }
