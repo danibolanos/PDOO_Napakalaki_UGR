@@ -87,6 +87,13 @@ public class PlayerView extends javax.swing.JPanel {
     aPanel.repaint();
     aPanel.revalidate();
     }
+    
+    public void setEnableButtons(boolean set){
+        discardTreasure.setEnabled(set);
+        makeVisible.setEnabled(set);
+        stealTreasure.setEnabled(set);
+        discardAllTreasures.setEnabled(set);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -297,6 +304,11 @@ public class PlayerView extends javax.swing.JPanel {
 
     private void discardTreasureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardTreasureActionPerformed
         // TODO add your handling code here:
+        ArrayList<Treasure> sel1 = getSelectedTreasures (hiddenTreasures);
+        ArrayList<Treasure> sel2 = getSelectedTreasures (visibleTreasures);
+        napakalakiModel.discardVisibleTreasures(sel2);
+        napakalakiModel.discardHiddenTreasures(sel1);
+        setPlayer (napakalakiModel.getCurrentPlayer());
     }//GEN-LAST:event_discardTreasureActionPerformed
 
     private void makeVisibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeVisibleActionPerformed
@@ -307,11 +319,14 @@ public class PlayerView extends javax.swing.JPanel {
     }//GEN-LAST:event_makeVisibleActionPerformed
 
     private void stealTreasureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stealTreasureActionPerformed
-        // TODO add your handling code here:
+        napakalakiModel.getCurrentPlayer().stealTreasure();
+        setPlayer (napakalakiModel.getCurrentPlayer());
     }//GEN-LAST:event_stealTreasureActionPerformed
 
     private void discardAllTreasuresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardAllTreasuresActionPerformed
         // TODO add your handling code here:
+        napakalakiModel.getCurrentPlayer().discardAllTreasures();
+        setPlayer (napakalakiModel.getCurrentPlayer());
     }//GEN-LAST:event_discardAllTreasuresActionPerformed
 
 

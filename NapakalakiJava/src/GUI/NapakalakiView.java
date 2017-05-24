@@ -23,11 +23,12 @@ public class NapakalakiView extends javax.swing.JFrame {
     
     public void setNapakalaki(Napakalaki napa){
         napakalakiModel = napa;
-        if(napakalakiModel.getCurrentMonster()!= null)
-            this.monsterView2.setMonster(napakalakiModel.getCurrentMonster());
-        if(napakalakiModel.getCurrentPlayer()!= null)
-            this.playerView2.setPlayer(napakalakiModel.getCurrentPlayer());
+        this.monsterView2.setMonster(napakalakiModel.getCurrentMonster());
+        this.playerView2.setPlayer(napakalakiModel.getCurrentPlayer());
         playerView2.setNapakalaki(napakalakiModel);
+        monsterView2.setVisible(false);
+        nextTurn.setEnabled(false);
+        combat.setEnabled(false);
         repaint();
         revalidate();
     }
@@ -50,10 +51,25 @@ public class NapakalakiView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         meet.setText("Conocer al Monstruo");
+        meet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                meetActionPerformed(evt);
+            }
+        });
 
         nextTurn.setText("Siguiente Turno");
+        nextTurn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextTurnActionPerformed(evt);
+            }
+        });
 
         combat.setText("Combatir");
+        combat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,6 +108,39 @@ public class NapakalakiView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void meetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetActionPerformed
+        // TODO add your handling code here:
+        monsterView2.setVisible(true);
+        playerView2.setEnableButtons(false);
+        combat.setEnabled(true);
+    }//GEN-LAST:event_meetActionPerformed
+
+    private void nextTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTurnActionPerformed
+        // TODO add your handling code here:
+        if(napakalakiModel.nextTurn()){
+            nextTurn.setEnabled(false);
+            monsterView2.setVisible(false);
+            meet.setEnabled(true);
+        }
+        this.playerView2.setPlayer(napakalakiModel.getCurrentPlayer());
+        this.monsterView2.setMonster(napakalakiModel.getCurrentMonster());
+        combat.setEnabled(false);
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_nextTurnActionPerformed
+
+    private void combatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatActionPerformed
+        // TODO add your handling code here:
+        napakalakiModel.developCombat();
+        this.playerView2.setPlayer(napakalakiModel.getCurrentPlayer());
+        nextTurn.setEnabled(true);
+        playerView2.setEnableButtons(true);
+        meet.setEnabled(false);
+        combat.setEnabled(false);
+        repaint();
+        revalidate();
+    }//GEN-LAST:event_combatActionPerformed
 
     /**
      * @param args the command line arguments

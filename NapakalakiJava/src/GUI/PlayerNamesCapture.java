@@ -135,9 +135,9 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
 
     private void PlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayActionPerformed
         // TODO add your handling code here:
-        names.add (Player1.getText());
-        names.add (Player2.getText());
-        names.add (Player3.getText());
+        names.add (name1.getText());
+        names.add (name2.getText());
+        names.add (name3.getText());
         this.dispose();
     }//GEN-LAST:event_PlayActionPerformed
 
