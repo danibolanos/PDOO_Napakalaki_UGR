@@ -355,6 +355,10 @@ public class Player {
         }
     }
     
+    public BadConsequence getPendingBadConsequence(){
+        return pendingBadConsequence;
+    }
+    
     public String toString(){
         String cadena = "Nombre: " + name;
         cadena += "\nNivel: " + level;

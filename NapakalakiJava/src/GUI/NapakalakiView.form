@@ -23,13 +23,65 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="1463" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="playerView2" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="meet" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="nextTurn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="combat" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="monsterView2" min="-2" pref="507" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="667" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <Component id="monsterView2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="meet" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nextTurn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="combat" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <Component id="playerView2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="GUI.PlayerView" name="playerView2">
+    </Component>
+    <Component class="GUI.MonsterView" name="monsterView2">
+    </Component>
+    <Component class="javax.swing.JButton" name="meet">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Conocer al Monstruo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="nextTurn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Siguiente Turno"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="combat">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Combatir"/>
+      </Properties>
+    </Component>
+  </SubComponents>
 </Form>
