@@ -90,7 +90,7 @@ class CardDealer
     prize = Prize.new(3,1)
     badConsequence = 
     NumericBadConsequence.new("Pierdes todos tus tesoros visibles",
-    0, BadConsequence::MAXTREASURES, 0)
+    0, NumericBadConsequence::MAXTREASURES, 0)
     @unusedMonsters << Monster.new("El gorrón en el umbral", 13, badConsequence, prize)
 
     #Monstruo6
@@ -198,7 +198,7 @@ class CardDealer
     prize = Prize.new(2,1)
     badConsequence = 
     NumericBadConsequence.new("Pierdes tus tesoros visible.Jajaja",
-    0,BadConsequence::MAXTREASURES,0)
+    0,NumericBadConsequence::MAXTREASURES,0)
     @unusedMonsters << Monster.new("Testigos oculares", 6, badConsequence, prize,2)
     
     #Monstruo22

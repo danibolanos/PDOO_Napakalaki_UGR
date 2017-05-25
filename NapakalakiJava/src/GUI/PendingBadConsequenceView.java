@@ -22,23 +22,23 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
      */
     public PendingBadConsequenceView() {
         initComponents();
-           setVisibleSpecific(false);
-           setVisibleNumeric(false);
+          // setVisibleSpecific(false);
+          // setVisibleNumeric(false);
     }
     
     public void setPendingBadConsequence(BadConsequence bc){
        badConsequenceModel = bc;
        
        if(badConsequenceModel instanceof NumericBadConsequence){
-           setVisibleNumeric(true);
-           setVisibleSpecific(false);
+           //setVisibleNumeric(true);
+          // setVisibleSpecific(false);
           this.randomVT.setText(Integer.toString(((NumericBadConsequence)badConsequenceModel).getNVisibleTreasures()));
           this.randomHT.setText(Integer.toString(((NumericBadConsequence)badConsequenceModel).getNHiddenTreasures()));
        }
        
        if(badConsequenceModel instanceof SpecificBadConsequence){
-           setVisibleNumeric(false);
-           setVisibleSpecific(true);
+           //setVisibleNumeric(false);
+           //setVisibleSpecific(true);
           this.specificVT.setText(((SpecificBadConsequence)badConsequenceModel).getSpecificVisibleTreasures().toString());
           this.specificHT.setText(((SpecificBadConsequence)badConsequenceModel).getSpecificHiddenTreasures().toString());
        }
@@ -101,14 +101,6 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
         sLabel3.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
         sLabel3.setText("Específicos:");
 
-        randomVT.setText("randomVT");
-
-        specificVT.setText("specificVT");
-
-        randomHT.setText("randomHT");
-
-        specificHT.setText("specificHT");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,24 +108,25 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nLabel1)
-                    .addComponent(sLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(nLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(randomVT, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(sLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(randomHT, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(sLabel3))
+                            .addComponent(sLabel1, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(randomVT, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(nLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(specificVT, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(sLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(randomHT, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(sLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(specificHT, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(specificVT, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                            .addComponent(specificHT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -141,22 +134,30 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(nLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nLabel2)
-                    .addComponent(randomVT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nLabel3)
-                    .addComponent(specificVT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(specificVT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nLabel2)
+                        .addComponent(randomVT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(nLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sLabel2)
-                    .addComponent(randomHT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sLabel3)
-                    .addComponent(specificHT, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(sLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(sLabel2)
+                                .addComponent(randomHT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(sLabel3))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(specificHT, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

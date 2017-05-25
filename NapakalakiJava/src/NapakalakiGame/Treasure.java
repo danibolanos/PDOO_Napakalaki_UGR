@@ -38,4 +38,8 @@ public class Treasure {
         
         return cadena;
     }
+    public String getInfo(){
+        String cadena=name + ", +" + bonus + ", " + type;
+        return cadena;
+    }
 }

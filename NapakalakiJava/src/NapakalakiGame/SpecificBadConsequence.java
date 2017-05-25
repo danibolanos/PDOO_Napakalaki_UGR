@@ -117,4 +117,13 @@ public class SpecificBadConsequence extends BadConsequence{
      
            return cadena;
         }
+ 
+        @Override
+        public String getInfo(){
+           String cadena = super.getInfo();
+           cadena += "\nTesoros Visibles Específicos Perdidos = " + getSpecificVisibleTreasures()
+           + "\nTesoros Ocultos Específicos Perdidos = " + getSpecificHiddenTreasures();
+     
+           return cadena;
+        }
 }

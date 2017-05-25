@@ -9,8 +9,6 @@ require_relative 'treasure_kind'
 require_relative 'player'
 
 class BadConsequence
-  
-  MAXTREASURES = 10
     
   private
   
@@ -137,7 +135,7 @@ class BadConsequence
   protected
   #attr_accessor :death
   
-  #private_class_method :new
+  private_class_method :new
 
 end
 end

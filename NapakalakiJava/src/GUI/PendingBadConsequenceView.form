@@ -19,26 +19,29 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="nLabel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="sLabel1" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="nLabel2" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="nLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="randomVT" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="nLabel3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="sLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="randomHT" min="-2" pref="27" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="sLabel3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="sLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="randomVT" min="-2" pref="72" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="nLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="specificVT" min="-2" pref="74" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="sLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="randomHT" min="-2" pref="353" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                      <Component id="sLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="specificHT" min="-2" pref="334" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="specificVT" pref="353" max="32767" attributes="0"/>
+                          <Component id="specificHT" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -50,25 +53,39 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="nLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="nLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="randomVT" alignment="3" max="32767" attributes="0"/>
-                  <Component id="nLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="specificVT" alignment="3" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="specificVT" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="nLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="randomVT" alignment="3" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="nLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="sLabel1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="sLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="sLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="randomHT" alignment="1" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="sLabel3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="specificHT" min="-2" pref="15" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="sLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="randomHT" alignment="3" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="sLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="specificHT" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -123,24 +140,12 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="randomVT">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="randomVT"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="specificVT">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="specificVT"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="randomHT">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="randomHT"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="specificHT">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="specificHT"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

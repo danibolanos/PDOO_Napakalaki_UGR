@@ -14,6 +14,8 @@ import java.util.ArrayList;
 public class NumericBadConsequence extends BadConsequence{
         private int nVisibleTreasures;
         private int nHiddenTreasures;
+        
+        static final int MAXTREASURES = 10;
     
         public NumericBadConsequence(String t, int l, int nVisible, int nHidden){
             super(t, l);
@@ -71,6 +73,15 @@ public class NumericBadConsequence extends BadConsequence{
             String cadena = super.toString();
             cadena += "\nRandom_Visible_Treasures_Down = " + Integer.toString(nVisibleTreasures) 
             + " / Random_Hidden_Treasures_Down = " + Integer.toString(nHiddenTreasures);
+                
+            return cadena;
+        }
+        
+        @Override
+        public String getInfo(){
+            String cadena = super.getInfo();
+            cadena += "\nNúmero de Tesoros Visibles Perdidos = " + Integer.toString(nVisibleTreasures) 
+            + "\nNúmero de Tesoros Ocultos Perdidos = " + Integer.toString(nHiddenTreasures);
                 
             return cadena;
         }

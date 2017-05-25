@@ -6,6 +6,9 @@ require_relative 'bad_consequence'
 
 module NapakalakiGame
   class NumericBadConsequence < BadConsequence
+    
+    MAXTREASURES = 10
+      
     def initialize(t, l, nVisible, nHidden)
       bc = super(t, l)
       @nVisibleTreasures=nVisible
@@ -58,6 +61,8 @@ module NapakalakiGame
       cadena += "\nRandom_Visible_Treasures_Down = #{@nVisibleTreasures} / Random_Hidden_Treasures_Down = #{@nHiddenTreasures}"
       cadena
     end
+    
+      public_class_method :new
   
   end
 end

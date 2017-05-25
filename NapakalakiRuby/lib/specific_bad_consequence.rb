@@ -82,5 +82,7 @@ module NapakalakiGame
       cadena += "\nSpecific_Visible_Treasures_Down = #{@specificVisibleTreasures} / Specific_Hidden_Treasures_Down = #{@specificHiddenTreasures}" 
       cadena
     end
+    
+    public_class_method :new
   end
 end
