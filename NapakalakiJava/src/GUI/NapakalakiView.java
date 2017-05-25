@@ -47,6 +47,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         meet = new javax.swing.JButton();
         nextTurn = new javax.swing.JButton();
         combat = new javax.swing.JButton();
+        jOptionPane1 = new javax.swing.JOptionPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,6 +77,7 @@ public class NapakalakiView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, -1, -1));
+        getContentPane().add(jOptionPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 410, 10, 10));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -94,6 +96,10 @@ public class NapakalakiView extends javax.swing.JFrame {
             monsterView2.setVisible(false);
             meet.setEnabled(true);
         }
+        else
+            jOptionPane1.showMessageDialog(null, "No cumples las condiciones para pasar de turno."
+            + "\nO bien tienes más de 4 tesoros ocultos."
+            + "\nO bien te queda mal rollo por cumplir.", "ADVERTENCIA", jOptionPane1.WARNING_MESSAGE);
         this.playerView2.setPlayer(napakalakiModel.getCurrentPlayer());
         this.monsterView2.setMonster(napakalakiModel.getCurrentMonster());
         combat.setEnabled(false);
@@ -122,6 +128,7 @@ public class NapakalakiView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton combat;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JButton meet;
     private GUI.MonsterView monsterView2;
     private javax.swing.JButton nextTurn;
