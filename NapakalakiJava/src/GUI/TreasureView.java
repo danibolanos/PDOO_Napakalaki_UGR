@@ -75,7 +75,7 @@ public class TreasureView extends javax.swing.JPanel {
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
-        setBackground(new java.awt.Color(0, 204, 0));
+        setBackground(new java.awt.Color(138, 247, 129));
         selected = !isSelected();
 
         setOpaque(selected);
