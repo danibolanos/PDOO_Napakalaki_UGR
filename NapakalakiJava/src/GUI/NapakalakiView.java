@@ -50,6 +50,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         nextTurn = new javax.swing.JButton();
         combat = new javax.swing.JButton();
         jOptionPane2 = new javax.swing.JOptionPane();
+        jOptionPane1 = new javax.swing.JOptionPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,6 +81,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         });
         getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, -1, -1));
         getContentPane().add(jOptionPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(642, 110, 40, 30));
+        getContentPane().add(jOptionPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -115,13 +117,18 @@ public class NapakalakiView extends javax.swing.JFrame {
         String derrota = "HAS PERDIDO EL COMBATE";
         String victoria = "HAS GANADO EL COMBATE";
         String sectario = " Y TE CONVIERTES EN SECTARIO";
+        String ganador = "HAS GANADO LA PARTIDA";
         
         if (resultado==CombatResult.LOSE)
             jOptionPane2.showMessageDialog(null, derrota, "RESULTADO DEL COMBATE", jOptionPane2.ERROR_MESSAGE);
         if(resultado==CombatResult.LOSEANDCONVERT)
             jOptionPane2.showMessageDialog(null, derrota+sectario, "RESULTADO DEL COMBATE", jOptionPane2.INFORMATION_MESSAGE);
         if(resultado==CombatResult.WIN)
-            jOptionPane2.showMessageDialog(null, victoria, "RESULTADO DEL COMBATE", jOptionPane2.QUESTION_MESSAGE);            
+            jOptionPane2.showMessageDialog(null, victoria, "RESULTADO DEL COMBATE", jOptionPane2.QUESTION_MESSAGE); 
+        if(napakalakiModel.endOfGame(resultado)){
+            jOptionPane1.showMessageDialog(null, ganador, "RESULTADO DEL COMBATE", jOptionPane2.INFORMATION_MESSAGE);
+            System.exit(0);
+        }
         
         this.playerView2.setPlayer(napakalakiModel.getCurrentPlayer());
         this.playerView2.setPlayer(napakalakiModel.getCurrentPlayer());
@@ -142,6 +149,7 @@ public class NapakalakiView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton combat;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JOptionPane jOptionPane2;
     private javax.swing.JButton meet;
     private GUI.MonsterView monsterView2;
