@@ -84,10 +84,10 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
         specificHT = new javax.swing.JLabel();
 
         nLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
-        nLabel1.setText("Tesoros Visibles perdidos:");
+        nLabel1.setText("Tesoros Visibles a descartar:");
 
         sLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
-        sLabel1.setText("Tesoros Ocultos perdidos:");
+        sLabel1.setText("Tesoros Ocultos a descartar:");
 
         nLabel2.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
         nLabel2.setText("Aleatorios:");
@@ -148,9 +148,8 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
                         .addComponent(sLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(sLabel2)
-                                .addComponent(randomHT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(randomHT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(sLabel2)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(sLabel3))))
