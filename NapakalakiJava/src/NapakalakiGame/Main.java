@@ -36,6 +36,7 @@ public class Main {
         napakalakiView.setNapakalaki(game);
         
         napakalakiView.setVisible(true);
+        
     }
     
 }
