@@ -117,7 +117,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         String derrota = "HAS PERDIDO EL COMBATE";
         String victoria = "HAS GANADO EL COMBATE";
         String sectario = " Y TE CONVIERTES EN SECTARIO";
-        String ganador = "HAS GANADO LA PARTIDA";
+        String ganador = " HAS GANADO LA PARTIDA";
         
         if (resultado==CombatResult.LOSE)
             jOptionPane2.showMessageDialog(null, derrota, "RESULTADO DEL COMBATE", jOptionPane2.ERROR_MESSAGE);
@@ -126,7 +126,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         if(resultado==CombatResult.WIN)
             jOptionPane2.showMessageDialog(null, victoria, "RESULTADO DEL COMBATE", jOptionPane2.QUESTION_MESSAGE); 
         if(napakalakiModel.endOfGame(resultado)){
-            jOptionPane1.showMessageDialog(null, ganador, "RESULTADO DEL COMBATE", jOptionPane2.INFORMATION_MESSAGE);
+            jOptionPane1.showMessageDialog(null, napakalakiModel.getCurrentPlayer().getName()+ganador, "RESULTADO DEL COMBATE", jOptionPane2.INFORMATION_MESSAGE);
             System.exit(0);
         }
         
