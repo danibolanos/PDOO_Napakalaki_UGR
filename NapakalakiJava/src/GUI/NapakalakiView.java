@@ -49,7 +49,6 @@ public class NapakalakiView extends javax.swing.JFrame {
         meet = new javax.swing.JButton();
         nextTurn = new javax.swing.JButton();
         combat = new javax.swing.JButton();
-        jOptionPane1 = new javax.swing.JOptionPane();
         jOptionPane2 = new javax.swing.JOptionPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,7 +79,6 @@ public class NapakalakiView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(combat, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, -1, -1));
-        getContentPane().add(jOptionPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 410, 30, 20));
         getContentPane().add(jOptionPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(642, 110, 40, 30));
 
         pack();
@@ -101,9 +99,9 @@ public class NapakalakiView extends javax.swing.JFrame {
             meet.setEnabled(true);
         }
         else
-            jOptionPane1.showMessageDialog(null, "No cumples las condiciones para pasar de turno."
+            jOptionPane2.showMessageDialog(null, "No cumples las condiciones para pasar de turno."
             + "\nO bien tienes más de 4 tesoros ocultos."
-            + "\nO bien te queda mal rollo por cumplir.", "ADVERTENCIA", jOptionPane1.WARNING_MESSAGE);
+            + "\nO bien te queda mal rollo por cumplir.", "ADVERTENCIA", jOptionPane2.WARNING_MESSAGE);
         this.playerView2.setPlayer(napakalakiModel.getCurrentPlayer());
         this.monsterView2.setMonster(napakalakiModel.getCurrentMonster());
         combat.setEnabled(false);
@@ -119,11 +117,11 @@ public class NapakalakiView extends javax.swing.JFrame {
         String sectario = " Y TE CONVIERTES EN SECTARIO";
         
         if (resultado==CombatResult.LOSE)
-            jOptionPane2.showMessageDialog(null, derrota, "RESULTADO DEL COMBATE", jOptionPane1.ERROR_MESSAGE);
+            jOptionPane2.showMessageDialog(null, derrota, "RESULTADO DEL COMBATE", jOptionPane2.ERROR_MESSAGE);
         if(resultado==CombatResult.LOSEANDCONVERT)
-            jOptionPane2.showMessageDialog(null, derrota+sectario, "RESULTADO DEL COMBATE", jOptionPane1.INFORMATION_MESSAGE);
+            jOptionPane2.showMessageDialog(null, derrota+sectario, "RESULTADO DEL COMBATE", jOptionPane2.INFORMATION_MESSAGE);
         if(resultado==CombatResult.WIN)
-            jOptionPane2.showMessageDialog(null, victoria, "RESULTADO DEL COMBATE", jOptionPane1.QUESTION_MESSAGE);            
+            jOptionPane2.showMessageDialog(null, victoria, "RESULTADO DEL COMBATE", jOptionPane2.QUESTION_MESSAGE);            
         
         this.playerView2.setPlayer(napakalakiModel.getCurrentPlayer());
         this.playerView2.setPlayer(napakalakiModel.getCurrentPlayer());
@@ -144,7 +142,6 @@ public class NapakalakiView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton combat;
-    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JOptionPane jOptionPane2;
     private javax.swing.JButton meet;
     private GUI.MonsterView monsterView2;
