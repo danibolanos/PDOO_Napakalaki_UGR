@@ -247,6 +247,7 @@ public class CardDealer {
         }
         
         dar=unusedTreasures.get(0);
+        usedTreasures.add(dar);
         unusedTreasures.remove(0);
         
         return dar;
@@ -266,6 +267,7 @@ public class CardDealer {
         }
         
         dar=unusedMonsters.get(0);
+        usedMonsters.add(dar);
         unusedMonsters.remove(0);
         
         return dar;

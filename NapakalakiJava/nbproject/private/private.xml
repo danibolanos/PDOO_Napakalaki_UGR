@@ -3,12 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/jomabose/NapakalakiJava/src/NapakalakiGame/Napakalaki.java</file>
-            <file>file:/home/jomabose/NapakalakiJava/src/NapakalakiGame/Main.java</file>
-            <file>file:/home/jomabose/NapakalakiJava/src/GUI/NapakalakiView.java</file>
-            <file>file:/home/jomabose/NapakalakiJava/src/NapakalakiGame/EjemploMain.java</file>
-            <file>file:/home/jomabose/NapakalakiJava/src/Test/GameTester.java</file>
-            <file>file:/home/jomabose/NapakalakiJava/src/Test/Command.java</file>
+            <file>file:/home/danibolanos/Escritorio/NapakalakiJava/src/GUI/PlayerNamesCapture.java</file>
+            <file>file:/home/danibolanos/Escritorio/NapakalakiJava/src/GUI/NapakalakiView.java</file>
+            <file>file:/home/danibolanos/Escritorio/NapakalakiJava/src/NapakalakiGame/CardDealer.java</file>
         </group>
     </open-files>
 </project-private>
