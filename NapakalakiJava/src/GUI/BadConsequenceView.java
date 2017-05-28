@@ -6,9 +6,6 @@
 package GUI;
 
 import NapakalakiGame.BadConsequence;
-import NapakalakiGame.DeathBadConsequence;
-import NapakalakiGame.NumericBadConsequence;
-import NapakalakiGame.SpecificBadConsequence;
 
 /**
  *

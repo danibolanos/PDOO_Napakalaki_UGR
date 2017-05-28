@@ -6,7 +6,6 @@
 package GUI;
 
 import NapakalakiGame.CombatResult;
-import NapakalakiGame.CultistPlayer;
 import NapakalakiGame.Napakalaki;
 
 /**
