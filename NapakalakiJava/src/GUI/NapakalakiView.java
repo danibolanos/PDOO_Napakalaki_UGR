@@ -30,6 +30,7 @@ public class NapakalakiView extends javax.swing.JFrame {
         monsterView2.setVisible(false);
         nextTurn.setEnabled(false);
         combat.setEnabled(false);
+        playerView2.setDescartarButtons(false);
         repaint();
         revalidate();
     }
@@ -98,6 +99,7 @@ public class NapakalakiView extends javax.swing.JFrame {
             nextTurn.setEnabled(false);
             monsterView2.setVisible(false);
             meet.setEnabled(true);
+            playerView2.setDescartarButtons(false);
         }
         else
             jOptionPane2.showMessageDialog(null, "No cumples las condiciones para pasar de turno."

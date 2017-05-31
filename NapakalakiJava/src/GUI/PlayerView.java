@@ -94,6 +94,11 @@ public class PlayerView extends javax.swing.JPanel {
         stealTreasure.setEnabled(set);
         discardAllTreasures.setEnabled(set);
     }
+    
+    public void setDescartarButtons(boolean set){
+        discardTreasure.setEnabled(set);
+        discardAllTreasures.setEnabled(set);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
