@@ -1,7 +1,5 @@
-# Napakalaki_PDOO
-Repositorio para la realización de Napakalaki. 
-
-Asignatura PDOO UGR. 2ºDGIIM. 
+# Prácticas Programación y Diseño Dirigido a Objetos (PDOO)
+Repositorio para la Práctica y Desarrollo del juego Napakalaki de la asignatura Programación y Diseño Dirigido a Objetos de 2ºDGIIM.
 
 Realizado por:
 
